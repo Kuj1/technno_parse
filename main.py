@@ -11,6 +11,7 @@ import pandas as pd
 import openpyxl
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent as UA
@@ -339,26 +340,14 @@ def get_char(name_char, value_char, monitors: bool, site):
                 pass
         elif name_char == 'Функциональность':
             try:
-                try:
-                    each_one_char.update(
-                        {
-                            'Контрастность': {
-                                'value': value_char.split(':')[1].strip().split(',').strip(),
-                                'char_name': 'Контрастность',
-                                'vid_name': 'Обычный',
-                                'unit_name': '(без наименования)'
-                            }
-                        }
-                    )   
-                except:
-                    each_one_char.update(
-                        {
-                            'value': value_char.strip(),
-                            'char_name': 'Контрастность',
-                            'vid_name': 'Обычный',
-                            'unit_name': 'несколько из'
-                        }
-                    )
+                each_one_char.update(
+                    {
+                        'value': value_char.strip().split(','),
+                        'char_name': 'Функциональность',
+                        'vid_name': 'Обычный',
+                        'unit_name': 'несколько из'
+                    }
+                )
             except:
                 pass
         elif name_char == 'Динамическая контрастность':
@@ -1106,7 +1095,7 @@ def get_char(name_char, value_char, monitors: bool, site):
                 each_one_char.update(
                     {
                         'Стандарты': {
-                            'value': value_char.strip(),
+                            'value': value_char.strip().split(','),
                             'char_name': 'Стандарты',
                             'vid_name': 'один из',
                             'unit_name': '(без наименования)'
@@ -1297,20 +1286,26 @@ def search_monitors(name_xlsx: str):
             nice_vendor_list.append(vendor)
 
     search_req_mon = list(map(lambda a, x, y, z: str(a) + "/" + x + " " + y + " " + z, resurlt_xlsx[0], nice_vendor_list, nice_width_list, nice_part_list))
-    driver = DriverInitialize(headless=True)
+    driver = DriverInitialize(headless=False)
 
+    count_cur_req = 0
+    count_all_req = len(search_req_mon)
     with driver:
         for full_req in search_req_mon:
+            count_cur_req += 1
+            print(f'\n{full_req}\t{count_cur_req}\{count_all_req}\n')
+
             result_char_dict = dict()
             char_list = list()
-            # result_list = list()
+
             for site in params_sites_search:
+                # site = 'https://www.dns-shop.ru/search/?q='
                 req = full_req.split('/')[1].strip()
                 sku = full_req.split('/')[0].strip()
                 search_url = f'{site}{req}'
                 driver.get(search_url)
                 print(f'[!] URL: {search_url}')
-                time.sleep(2)
+                # time.sleep(1)
 
                 if site == 'https://www.regard.ru/catalog?search=':
 
@@ -1324,14 +1319,16 @@ def search_monitors(name_xlsx: str):
                         time.sleep(15)
                         driver.get(search_url)
                         time.sleep(3)
+                        print('\t[-] Wait for response url (429)')
                     
                     try:
-                        WebDriverWait(driver, 12).until(EC.presence_of_element_located((By.XPATH, '//*[@id="__next"]/div/div/main')))
+                        WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="__next"]/div/div/main')))
                     except:
                         continue
 
                     item_soup = BeautifulSoup(driver.page_source, 'html.parser')
                     try:
+                        print('\t[+] Responsed - OK')
                         true_our_item = item_soup.find('div', class_='rendererWrapper').find('div', class_='ListingRenderer_row__0VJXB').find_all('div', class_='Card_row__6_JG5')
 
                         if len(true_our_item) == 1:
@@ -1364,14 +1361,16 @@ def search_monitors(name_xlsx: str):
                                         
                             except Exception as ex:
                                 print(ex)
-                                print('\t[-] Not characteristics')
-
+                                print('\t[-] No characteristics')
+                        else:
+                            print('\t[-] Item don\'t found') 
                     except:
                         print('\t[-] Item don\'t found')
                 elif site == 'https://www.onlinetrade.ru/sitesearch.html?query=':
                     try:
-                        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'otv3_submit'))).click()
-                        time.sleep(3)
+                        WebDriverWait(driver, 6).until(EC.element_to_be_clickable((By.ID, 'otv3_submit'))).click()
+                        time.sleep(1)
+                        print('\t[+] Captcha solved')
                     except Exception as ex:
                         print('\t[+] No captcha')
                     
@@ -1413,13 +1412,21 @@ def search_monitors(name_xlsx: str):
                                 print('\t[+] Characteristics grabed')
                             except Exception as ex:
                                 print(ex)
-                                print('\t[-] Not characteristics')
-
+                                print('\t[-] No characteristics')
+                        else:
+                            print('\t[-] Item don\'t found') 
                     except:
                         print('\t[-] Item don\'t found')   
                 elif site ==  'https://www.dns-shop.ru/search/?q=':
                     try:
-                        WebDriverWait(driver, 12).until(EC.presence_of_element_located((By.XPATH, '///*[@class="container product-card"]')))
+                        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, 'product-card-description-specs')))
+                        time.sleep(1)
+                        # driver.find_element(By.CLASS_NAME, 'product-characteristics__expand_in').click()
+                        cur_url = driver.current_url
+
+                        driver.get(f'{cur_url}characteristics/')
+
+                        time.sleep(1)
                         
                         char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -1440,13 +1447,13 @@ def search_monitors(name_xlsx: str):
                             print('\t[+] Characteristics grabed')
                         except Exception as ex:
                             print(ex)
-                            print('\t[-] Not characteristics')
+                            print('\t[-] No characteristics')
 
-                    except:
+                    except Exception as ex:
                         print('\t[-] Item don\'t found')  
                 elif site == 'https://www.novo-market.ru/search/?q=':
                     try:
-                        WebDriverWait(driver, 12).until(EC.presence_of_element_located((By.CLASS_NAME, 'products')))
+                        WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.CLASS_NAME, 'products')))
                         
                         wrap_soup = BeautifulSoup(driver.page_source, 'html_parser')
                         title_item = wrap_soup.find_all('div', class_='xml_article')
@@ -1479,7 +1486,8 @@ def search_monitors(name_xlsx: str):
 
                             except Exception as ex:
                                 print(ex)
-
+                        else:
+                            print('\t[-] Item don\'t found') 
                     except:
                         print('\t[-] Item don\'t found')  
 
@@ -1493,8 +1501,8 @@ def search_monitors(name_xlsx: str):
                 }
             )
 
-            with open(os.path.join(data_dir, 'result_monitors.json'), 'a', encoding='utf-8') as file:
-                json.dump(result_monitors, file, indent=4, ensure_ascii=False)
+        with open(os.path.join(data_dir, 'result_monitors.json'), 'a', encoding='utf-8') as file:
+            json.dump(result_monitors, file, indent=4, ensure_ascii=False)
 
 def main():
     search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
