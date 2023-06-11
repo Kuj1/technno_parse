@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "techno-parse"
+version = "0.1.0"
+description = ""
+authors = ["kuj1 <the.same.dentist@gmail.com>"]
+readme = "README.md"
+packages = [{include = "techno_parse"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+selenium = "^4.9.1"
+undetected-chromedriver = "^3.4.7"
+bs4 = "^0.0.1"
+openpyxl = "^3.1.2"
+pandas = "^2.0.2"
+fake-useragent = "^1.1.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
