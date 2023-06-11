@@ -58,7 +58,7 @@ def get_data_from_xlsx(filename: str):
 
     return sku_list, part_list, name_list, vendor_list
 
-def get_char(name_char, value_char, monitors: bool, site):
+def get_char(name_char, value_char, monitors: bool, mice: bool, site):
     each_one_char = dict()
     if monitors:
         if name_char == 'Разрешение экрана' or name_char == 'Максимальное разрешение':
@@ -1189,7 +1189,566 @@ def get_char(name_char, value_char, monitors: bool, site):
                 )
             except:
                 pass
-    
+    elif mice:
+        if name_char == 'Материал изготовления':
+            try:
+                each_one_char.update(
+                    {
+                        'Материал обоймы': {
+                            'value': value_char.strip(),
+                            'char_name': 'Материал обоймы',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Время автономной работы мыши':
+                    try:
+                        each_one_char.update(
+                            {
+                                'Время работы': {
+                                    'value': value_char.strip(),
+                                    'char_name': 'Время работы',
+                                    'vid_name': 'Обычный',
+                                    'unit_name': '(без наименования)'
+                                }
+                            }
+                        )
+                    except:
+                        pass
+        elif name_char == 'Дополнительная информация' or name_char == 'Комплектация':
+            try:
+                each_one_char.update(
+                    {
+                        'Комплектация': {
+                            'value': value_char.strip(),
+                            'char_name': 'Комплектация',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Вес':
+            try:
+                each_one_char.update(
+                    {
+                        'Вес': {
+                            'value': value_char.strip(),
+                            'char_name': 'Вес',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Программируемые кнопки':
+            try:
+                each_one_char.update(
+                    {
+                        'Количество программируемых клавиш': {
+                            'value': value_char.strip(),
+                            'char_name': 'Количество программируемых клавиш',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Сканер отпечатка пальца':
+            try:
+                each_one_char.update(
+                    {
+                        'Сканер отпечатка пальца': {
+                            'value': value_char.strip(),
+                            'char_name': 'Сканер отпечатка пальца',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Система регулировки веса':
+            try:
+                each_one_char.update(
+                    {
+                        'Система регулировки веса': {
+                            'value': value_char.strip(),
+                            'char_name': 'Система регулировки веса',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Бесшумные кнопки':
+            try:
+                each_one_char.update(
+                    {
+                        'Бесшумные кнопки': {
+                            'value': value_char.strip(),
+                            'char_name': 'Бесшумные кнопки',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Категория':
+            try:
+                each_one_char.update(
+                    {
+                        'Назначение': {
+                            'value': value_char.strip(),
+                            'char_name': 'Назначение',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Страна-производитель':
+            try:
+                each_one_char.update(
+                    {
+                        'Страна производства': {
+                            'value': value_char.strip(),
+                            'char_name': 'Страна производства',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Цвет' or name_char == 'Основной цвет':
+            try:
+                each_one_char.update(
+                    {
+                        'Цвет': {
+                            'value': value_char.strip(),
+                            'char_name': 'Цвет',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Общее количество кнопок' or name_char == 'Количество клавиш':
+            try:
+                each_one_char.update(
+                    {
+                        'Количество клавиш': {
+                            'value': value_char.strip(),
+                            'char_name': 'Количество клавиш',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Горизонтальная прокрутка':
+            try:
+                each_one_char.update(
+                    {
+                        'Горизонтальная прокрутка': {
+                            'value': value_char.strip(),
+                            'char_name': 'Горизонтальная прокрутка',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Тип беспроводной связи':
+            try:
+                each_one_char.update(
+                    {
+                        'Тип беспроводной связи': {
+                            'value': value_char.strip(),
+                            'char_name': 'Тип беспроводной связи',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Разрешение сенсора' or name_char == 'Максимальное разрешение датчика':
+            try:
+                each_one_char.update(
+                    {
+                        'Разрешение оптического сенсора': {
+                            'value': value_char.strip(),
+                            'char_name': 'Разрешение оптического сенсора',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Тип':
+            try:
+                each_one_char.update(
+                    {
+                        'Тип': {
+                            'value': value_char.strip(),
+                            'char_name': 'Тип',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Источник питания мыши' or name_char == 'Питание' or name_char == 'Тип источника питания':
+            try:
+                each_one_char.update(
+                    {
+                        'Источник питания мыши': {
+                            'value': value_char.strip(),
+                            'char_name': 'Источник питания мыши',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Хват' or name_char == 'Дизайн мыши':
+            try:
+                each_one_char.update(
+                    {
+                        'Дизайн': {
+                            'value': value_char.strip(),
+                            'char_name': 'Дизайн',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Особенности, дополнительно':
+            try:
+                each_one_char.update(
+                    {
+                        'Особенности': {
+                            'value': value_char.strip(),
+                            'char_name': 'Особенности',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Радиус действия беспроводной связи':
+            try:
+                each_one_char.update(
+                    {
+                        'Радиус действия беспроводной связи': {
+                            'value': value_char.strip(),
+                            'char_name': 'Радиус действия беспроводной связи',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Интерфейс подключения' or name_char == 'Интерфейс':
+            try:
+                each_one_char.update(
+                    {
+                        'Интерфейс подключения': {
+                            'value': value_char.strip(),
+                            'char_name': 'Интерфейс подключения',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Сенсорная прокрутка':
+            try:
+                each_one_char.update(
+                    {
+                        'Сенсорная прокрутка': {
+                            'value': value_char.strip(),
+                            'char_name': 'Сенсорная прокрутка',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Беспроводная связь':
+            try:
+                each_one_char.update(
+                    {
+                        'Беспроводная связь': {
+                            'value': value_char.strip(),
+                            'char_name': 'Беспроводная связь',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Тип подключения' or name_char == 'Тип соединения':
+            try:
+                each_one_char.update(
+                    {
+                        'Тип подключения': {
+                            'value': value_char.strip(),
+                            'char_name': 'Тип подключения',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Размеры (ШхВхГ)' or name_char == 'Размеры (Ш x Г x В), мм' or name_char == 'Габариты':
+            try:
+                each_one_char.update(
+                    {
+                        'Ширина': {
+                            'value': value_char.split('x')[0].strip(),
+                            'char_name': 'Ширина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Высота': {
+                            'value': value_char.split('x')[1].strip(),
+                            'char_name': 'Высота',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Глубина': {
+                            'value': value_char.split('x')[2].replace('мм', '').strip(),
+                            'char_name': 'Глубина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Ширина':
+            try:
+                each_one_char.update(
+                    {
+                        'Ширина': {
+                            'value': value_char.strip(),
+                            'char_name': 'Ширина',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Высота':
+            try:
+                each_one_char.update(
+                    {
+                        'Высота': {
+                            'value': value_char.strip(),
+                            'char_name': 'Высота',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Длина':
+            try:
+                each_one_char.update(
+                    {
+                        'Длина': {
+                            'value': value_char.strip(),
+                            'char_name': 'Длина',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Материал покрытия':
+            try:
+                each_one_char.update(
+                    {
+                        'Материал покрытия': {
+                            'value': value_char.strip(),
+                            'char_name': 'Материал покрытия',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Тип сенсора мыши' or name_char == 'Тип сенсора':
+            try:
+                each_one_char.update(
+                    {
+                        'Тип сенсора мыши': {
+                            'value': value_char.strip(),
+                            'char_name': 'Тип сенсора мыши',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Частота опроса' or name_char == 'Частота':
+            try:
+                each_one_char.update(
+                    {
+                        'Частота опроса': {
+                            'value': value_char.strip(),
+                            'char_name': 'Частота опроса',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Подсветка':
+            try:
+                each_one_char.update(
+                    {
+                        'Подсветка': {
+                            'value': value_char.strip(),
+                            'char_name': 'Подсветка',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Скорость (IPS)' or name_char == 'Скорость':
+            try:
+                each_one_char.update(
+                    {
+                        'Скорость (IPS)': {
+                            'value': value_char.strip(),
+                            'char_name': 'Скорость (IPS)',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Длина кабеля':
+            try:
+                each_one_char.update(
+                    {
+                        'Длина кабеля': {
+                            'value': value_char.strip(),
+                            'char_name': 'Длина кабеля',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Радиус действия беспроводной связи':
+            try:
+                each_one_char.update(
+                    {
+                        'Радиус действия беспроводной связи': {
+                            'value': value_char.strip(),
+                            'char_name': 'Радиус действия беспроводной связи',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Размеры в упаковке (Ш x Г x В), см':
+            try:
+                each_one_char.update(
+                    {
+                        'Ширина': {
+                            'value': value_char.split('x')[0].strip(),
+                            'char_name': 'Ширина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Высота': {
+                            'value': value_char.split('x')[1].strip(),
+                            'char_name': 'Высота',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Глубина': {
+                            'value': value_char.split('x')[2].replace('мм', '').strip(),
+                            'char_name': 'Глубина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Вес в упаковке':
+            try:
+                each_one_char.update(
+                    {
+                        'Вес в упаковке': {
+                            'value': value_char.strip(),
+                            'char_name': 'Вес в упаковке',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+
     return each_one_char
 
 
