@@ -2118,8 +2118,264 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
             except:
                 pass
     elif cartridges:
-        pass
-
+        if name_char == 'Совместимые бренды':
+            try:
+                each_one_char.update(
+                    {
+                        'Совместимые бренды': {
+                            'value': value_char.strip(),
+                            'char_name': 'Совместимые бренды',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Поддерживаемые модели принтеров':
+            try:
+                each_one_char.update(
+                    {
+                        'Поддерживаемые модели принтеров': {
+                            'value': value_char.strip(),
+                            'char_name': 'Поддерживаемые модели принтеров',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Назначение' or name_char == 'Тип картриджа':
+            try:
+                each_one_char.update(
+                    {
+                        'Назначение': {
+                            'value': value_char.strip(),
+                            'char_name': 'Назначение',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Вес':
+            try:
+                each_one_char.update(
+                    {
+                        'Вес': {
+                            'value': value_char.strip(),
+                            'char_name': 'Вес',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Ресурс':
+            try:
+                each_one_char.update(
+                    {
+                        'Ресурс': {
+                            'value': value_char.strip(),
+                            'char_name': 'Ресурс',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Количество в упаковке':
+            try:
+                each_one_char.update(
+                    {
+                        'Количество картриджей': {
+                            'value': value_char.strip(),
+                            'char_name': 'Количество картриджей',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Количество листов бумаги':
+            try:
+                each_one_char.update(
+                    {
+                        'Количество листов бумаги': {
+                            'value': value_char.strip(),
+                            'char_name': 'Количество листов бумаги',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Тип':
+            try:
+                each_one_char.update(
+                    {
+                        'Тип': {
+                            'value': value_char.strip(),
+                            'char_name': 'Тип',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Страна-производитель':
+            try:
+                each_one_char.update(
+                    {
+                        'Страна-производитель': {
+                            'value': value_char.strip(),
+                            'char_name': 'Страна-производитель',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Оригинальный':
+            try:
+                each_one_char.update(
+                    {
+                        'Оригинальный': {
+                            'value': value_char.strip(),
+                            'char_name': 'Оригинальный',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Цвет печати':
+            try:
+                each_one_char.update(
+                    {
+                        'Цвет': {
+                            'value': value_char.strip(),
+                            'char_name': 'Цвет',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Европодвес':
+            try:
+                each_one_char.update(
+                    {
+                        'Европодвес': {
+                            'value': value_char.strip(),
+                            'char_name': 'Европодвес',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Ресурс ленты, млн. знаков':
+            try:
+                each_one_char.update(
+                    {
+                        'Ресурс ленты, млн. знаков': {
+                            'value': value_char.strip(),
+                            'char_name': 'Ресурс ленты, млн. знаков',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Размеры (ШхВхГ)' or name_char == 'Размеры (Ш x Г x В), мм' or name_char == 'Габариты':
+            try:
+                each_one_char.update(
+                    {
+                        'Ширина': {
+                            'value': value_char.split('x')[0].strip(),
+                            'char_name': 'Ширина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Высота': {
+                            'value': value_char.split('x')[1].strip(),
+                            'char_name': 'Высота',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Глубина': {
+                            'value': value_char.split('x')[2].replace('мм', '').strip(),
+                            'char_name': 'Глубина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Ширина':
+            try:
+                each_one_char.update(
+                    {
+                        'Ширина': {
+                            'value': value_char.strip(),
+                            'char_name': 'Ширина',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Высота':
+            try:
+                each_one_char.update(
+                    {
+                        'Высота': {
+                            'value': value_char.strip(),
+                            'char_name': 'Высота',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Длина':
+            try:
+                each_one_char.update(
+                    {
+                        'Длина': {
+                            'value': value_char.strip(),
+                            'char_name': 'Длина',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
     return each_one_char
 
 
@@ -2196,11 +2452,61 @@ def search_mice(name_xlsx: str):
 
     search_req_mice = list(map(lambda a, x, y: str(a) + "/" + str(x) + " " + y, result_xlsx[0], nice_vendor_list, nice_part_list))
 
-    result_dict_mice = grab_data(req=search_req_mice, monitors=False, mice=True, ddr=False, cartridges=False)
+    result_dict_mice = grab_data(req=search_req_mice, monitors=False, mice=False, ddr=True, cartridges=False)
 
     with open(os.path.join(data_dir, 'result_mice.json'), 'a', encoding='utf-8') as file:
         json.dump(result_dict_mice, file, indent=4, ensure_ascii=False)
-        
+
+
+def search_ddr(name_xlsx:str):
+    path_to_xlsx = os.path.join(xlsx_dir, name_xlsx)
+    result_xlsx = get_data_from_xlsx(path_to_xlsx)
+
+    nice_part_list = list()
+    nice_vendor_list = list()
+
+    for part in result_xlsx[1]:
+        better_id = str(part).split(',')[0]
+        nice_part_list.append(better_id)
+
+    for vendor in result_xlsx[3]:
+        if vendor.strip() == 'Hewlett-Packard':
+            nice_vendor_list.append('HP')
+        else:
+            nice_vendor_list.append(vendor)
+
+    search_req_ddr = list(map(lambda a, x, y: str(a) + "/" + str(x) + " " + y, result_xlsx[0], nice_vendor_list, nice_part_list))
+
+    result_dict_ddr = grab_data(req=search_req_ddr, monitors=False, mice=True, ddr=True, cartridges=False)
+
+    with open(os.path.join(data_dir, 'result_ddr.json'), 'a', encoding='utf-8') as file:
+        json.dump(result_dict_ddr, file, indent=4, ensure_ascii=False)
+
+
+def search_cartridges(name_xlsx:str):
+    path_to_xlsx = os.path.join(xlsx_dir, name_xlsx)
+    result_xlsx = get_data_from_xlsx(path_to_xlsx)
+
+    nice_part_list = list()
+    nice_vendor_list = list()
+
+    for part in result_xlsx[1]:
+        better_id = str(part).split('/')[0]
+        nice_part_list.append(better_id)
+
+    for vendor in result_xlsx[3]:
+        if vendor.strip() == 'Hewlett-Packard':
+            nice_vendor_list.append('HP')
+        else:
+            nice_vendor_list.append(vendor)
+
+    search_req_cartridges = list(map(lambda a, x, y: str(a) + "/" + str(x) + " " + y, result_xlsx[0], nice_vendor_list, nice_part_list))
+
+    result_dict_cartridges = grab_data(req=search_req_cartridges, monitors=False, mice=True, ddr=False, cartridges=True)
+
+    with open(os.path.join(data_dir, 'result_cartridges.json'), 'a', encoding='utf-8') as file:
+        json.dump(result_dict_cartridges, file, indent=4, ensure_ascii=False)
+
 
 def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
     driver = DriverInitialize(headless=True)
@@ -2218,13 +2524,11 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
             char_list = list()
 
             for site in params_sites_search:
-                # site = 'https://www.dns-shop.ru/search/?q='
                 req = full_req.split('/')[1].strip()
                 sku = full_req.split('/')[0].strip()
                 search_url = f'{site}{req}'
                 driver.get(search_url)
                 print(f'[!] URL: {search_url}')
-                # time.sleep(1)
 
                 if site == 'https://www.regard.ru/catalog?search=':
 
@@ -2258,6 +2562,18 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                             time.sleep(1)
 
                             char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+                            try:
+                                image_item = char_item_soup.find('div', class_='product-slider-container').find('div', class_='swiper-wrapper').find('div', class_='swiper-zoom-container').find('img').get('src')
+                                img = {
+                                    'img': {
+                                        'img': f'https://www.regard.ru{image_item}'
+                                    }
+                                }
+
+                                result_char_dict.update(img)
+                            except:
+                                print('\t[-] Image not found')
 
                             try:
 
@@ -2320,6 +2636,18 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                             char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
                             try:
+                                image_item = char_item_soup.find('div', class_='productPage__displayedItem').find('div', class_='productPage__displayedItem__images').find('div', class_='productPage__displayedItem__images__big').find('a').get('href')
+                                img = {
+                                    'img': {
+                                        'img': image_item
+                                    }
+                                }
+
+                                result_char_dict.update(img)
+                            except:
+                                print('\t[-] Image not found')
+
+                            try:
 
                                 char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
 
@@ -2363,6 +2691,18 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                         char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
                         try:
+                            image_item = char_item_soup.find('div', class_='product-card-top__images').find('div', class_='product-images-slider').find('picture', class_='product-images-slider__main').find('source').get('srcset')
+                            img = {
+                                'img': {
+                                    'img': image_item
+                                }
+                            }
+
+                            result_char_dict.update(img)
+                        except:
+                            print('\t[-] Image not found')
+
+                        try:
                             char_item_wrapper = char_item_soup.find('div', class_='product-card-description').find('div', class_='product-card-description-specs').find('div', class_='product-characteristics').find('div', class_='product-characteristics-content').find_all('div', class_='product-characteristics__group')
                         except Exception as ex:
                             print(ex)
@@ -2403,6 +2743,18 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                 driver.get(f'https://www.novo-market.ru{item_url}')
                             except Exception as ex:
                                 print(ex)
+
+                            try:
+                                image_item = char_item_soup.find('div', class_='product-gallery').find('div', class_='product-detail-carousel__images').find('div', class_='preview-wrap').find('a').find('imag').get('src')
+                                img = {
+                                    'img': {
+                                        'img': f'https://www.novo-market.ru{image_item}'
+                                    }
+                                }
+
+                                result_char_dict.update(img)
+                            except:
+                                print('\t[-] Image not found')
 
                             try:
                                 char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -2451,9 +2803,10 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
 def main():
     # search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
-    search_mice(name_xlsx='product_templates_products_mice.xlsx')
+    # search_mice(name_xlsx='product_templates_products_mice.xlsx')
+    # search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
+    search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
 
 
 if __name__ == '__main__':
-    # while True:
     main()
