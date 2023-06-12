@@ -2807,9 +2807,9 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
 def main():
         search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
-        # search_mice(name_xlsx='product_templates_products_mice.xlsx')
-        # search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
-        # search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
+        search_mice(name_xlsx='product_templates_products_mice.xlsx')
+        search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
+        search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
 
 
 if __name__ == '__main__':
