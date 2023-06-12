@@ -58,7 +58,8 @@ def get_data_from_xlsx(filename: str):
 
     return sku_list, part_list, name_list, vendor_list
 
-def get_char(name_char, value_char, monitors: bool, mice: bool, site):
+
+def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, cartridges=bool):
     each_one_char = dict()
     if monitors:
         if name_char == 'Разрешение экрана' or name_char == 'Максимальное разрешение':
@@ -301,11 +302,12 @@ def get_char(name_char, value_char, monitors: bool, mice: bool, site):
                     }
                 )
                 each_one_char.update(
-                    {
-                        'value': value_char.split(',')[1].strip(),
-                        'char_name': 'Кол-во и тип USB-портов',
-                        'vid_name': 'Обычный',
-                        'unit_name': '(без наименования)'
+                    {   'Кол-во и тип USB-портов': {
+                            'value': value_char.split(',')[1].strip(),
+                            'char_name': 'Кол-во и тип USB-портов',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
                     }
                 )
             except:
@@ -334,18 +336,6 @@ def get_char(name_char, value_char, monitors: bool, mice: bool, site):
                             'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
                         }
-                    }
-                )
-            except:
-                pass
-        elif name_char == 'Функциональность':
-            try:
-                each_one_char.update(
-                    {
-                        'value': value_char.strip().split(','),
-                        'char_name': 'Функциональность',
-                        'vid_name': 'Обычный',
-                        'unit_name': 'несколько из'
                     }
                 )
             except:
@@ -1748,70 +1738,400 @@ def get_char(name_char, value_char, monitors: bool, mice: bool, site):
                 )
             except:
                 pass
+    elif ddr:
+        if name_char == 'Ранговость':
+            try:
+                each_one_char.update(
+                    {
+                        'Ранговость': {
+                            'value': value_char.strip(),
+                            'char_name': 'Ранговость',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Вес':
+            try:
+                each_one_char.update(
+                    {
+                        'Вес': {
+                            'value': value_char.strip(),
+                            'char_name': 'Вес',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Вес в упаковке':
+            try:
+                each_one_char.update(
+                    {
+                        'Вес в упаковке': {
+                            'value': value_char.strip(),
+                            'char_name': 'Вес в упаковке',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Поддержка XMP' or name_char == 'Профили Intel XMP' or name_char == 'XMP':
+            try:
+                each_one_char.update(
+                    {
+                        'Поддержка XMP': {
+                            'value': value_char.strip(),
+                            'char_name': 'Поддержка XMP',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Радиатор' or name_char == 'Наличие радиатора':
+            try:
+                each_one_char.update(
+                    {
+                        'Радиатор': {
+                            'value': value_char.strip(),
+                            'char_name': 'Радиатор',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Форм-фактор памяти' or name_char == 'Форм-фактор':
+            try:
+                each_one_char.update(
+                    {
+                        'Форм-фактор памяти': {
+                            'value': value_char.strip(),
+                            'char_name': 'Форм-фактор памяти',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Упаковка чипов':
+            try:
+                each_one_char.update(
+                    {
+                        'Упаковка чипов': {
+                            'value': value_char.strip(),
+                            'char_name': 'Упаковка чипов',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Высота':
+            try:
+                each_one_char.update(
+                    {
+                        'Высота': {
+                            'value': value_char.strip(),
+                            'char_name': 'Высота',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Row Precharge Delay (tRP)':
+            try:
+                each_one_char.update(
+                    {
+                        'Row Precharge Delay (tRP)': {
+                            'value': value_char.strip(),
+                            'char_name': 'Row Precharge Delay (tRP)',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Напряжение питания':
+            try:
+                each_one_char.update(
+                    {
+                        'Напряжение питания': {
+                            'value': value_char.strip(),
+                            'char_name': 'Напряжение питания',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Буферизованная (Registered)' or name_char == 'Буферизованная (RDIMM)':
+            try:
+                each_one_char.update(
+                    {
+                        'Буферизованная (Registered)': {
+                            'value': value_char.strip(),
+                            'char_name': 'Буферизованная (Registered)',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'CAS Latency (CL)':
+            try:
+                each_one_char.update(
+                    {
+                        'CAS Latency (CL)': {
+                            'value': value_char.strip(),
+                            'char_name': 'CAS Latency (CL)',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Игровая':
+            try:
+                each_one_char.update(
+                    {
+                        'Игровая': {
+                            'value': value_char.strip(),
+                            'char_name': 'Игровая',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Низкопрофильная (Low Profile)':
+            try:
+                each_one_char.update(
+                    {
+                        'Низкопрофильная (Low Profile)': {
+                            'value': value_char.strip(),
+                            'char_name': 'Низкопрофильная (Low Profile)',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Пропускная способность':
+            try:
+                each_one_char.update(
+                    {
+                        'Пропускная способность': {
+                            'value': value_char.strip(),
+                            'char_name': 'Пропускная способность',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Страна-производитель ':
+            try:
+                each_one_char.update(
+                    {
+                        'Страна-производитель ': {
+                            'value': value_char.strip(),
+                            'char_name': 'Страна-производитель ',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Activate to Precharge Delay (tRAS':
+            try:
+                each_one_char.update(
+                    {
+                        'Activate to Precharge Delay (tRAS': {
+                            'value': value_char.strip(),
+                            'char_name': 'Activate to Precharge Delay (tRAS',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Количество модулей в комплекте' or name_char == 'Кол-во модулей в упаковке':
+            try:
+                each_one_char.update(
+                    {
+                        'Количество модулей в комплекте': {
+                            'value': value_char.strip(),
+                            'char_name': 'Количество модулей в комплекте',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Количество контактов':
+            try:
+                each_one_char.update(
+                    {
+                        'Количество контактов': {
+                            'value': value_char.strip(),
+                            'char_name': 'Количество контактов',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Совместимость':
+            try:
+                each_one_char.update(
+                    {
+                        'Совместимость': {
+                            'value': value_char.strip(),
+                            'char_name': 'Совместимость',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Объем одного модуля':
+            try:
+                each_one_char.update(
+                    {
+                        'Объем одного модуля': {
+                            'value': value_char.strip(),
+                            'char_name': 'Объем одного модуля',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Тип памяти':
+            try:
+                each_one_char.update(
+                    {
+                        'Тип памяти': {
+                            'value': value_char.strip(),
+                            'char_name': 'Тип памяти',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'RAS to CAS Delay (tRCD)':
+            try:
+                each_one_char.update(
+                    {
+                        'RAS to CAS Delay (tRCD)': {
+                            'value': value_char.strip(),
+                            'char_name': 'RAS to CAS Delay (tRCD)',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Поддержка ECC':
+            try:
+                each_one_char.update(
+                    {
+                        'Поддержка ECC': {
+                            'value': value_char.strip(),
+                            'char_name': 'Поддержка ECC',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Тактовая частота':
+            try:
+                each_one_char.update(
+                    {
+                        'Тактовая частота': {
+                            'value': value_char.strip(),
+                            'char_name': 'Тактовая частота',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Низкопрофильная (Low Profile)':
+            try:
+                each_one_char.update(
+                    {
+                        'Низкопрофильная (Low Profile)': {
+                            'value': value_char.strip(),
+                            'char_name': 'Низкопрофильная (Low Profile)',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Подсветка элементов платы':
+            try:
+                each_one_char.update(
+                    {
+                        'Подсветка элементов платы': {
+                            'value': value_char.strip(),
+                            'char_name': 'Подсветка элементов платы',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+    elif cartridges:
+        pass
 
     return each_one_char
 
 
-
-
-def search_data(url,):
-    pass
-    #     driver = DriverInitialize(headless=False)
-    #     delay = 30
-
-    #     with driver:
-    #         name_site = url.split('.')[1]
-    #         if name_site in url and name_site == 'regard':
-    #             try:
-    #                 driver.get(url)
-    #                 WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, '__next')))
-    #                 print(f'Hi, {name_site} this is first "if"')
-    #                 driver.save_screenshot('sh_1.png')
-    #             except:
-    #                 print('page is not ready')
-    #         elif name_site in url and name_site == 'onlinetrade':
-    #             try:
-    #                 try:
-    #                     driver.get(url)
-    #                     WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'wrap')))
-    #                     print(f'Hi, {name_site} this is second "if"')
-    #                     driver.save_screenshot('sh_2.png')
-    #                 except:
-    #                     WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'otv3_submit'))).click()
-    #                     time.sleep(1)
-    #                     driver.save_screenshot('sh_busted_2.png')
-    #                     print('busted')
-    #             except:
-    #                 print('page is not ready')
-    #         elif name_site in url and name_site == 'novo-market':
-    #             try:
-    #                 driver.get(url)
-    #                 WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'panel')))
-    #                 print(f'Hi, {name_site} this is third "if"')
-    #                 driver.save_screenshot('sh_3.png')
-    #             except:
-    #                 print('page is not ready')
-    #         elif name_site in url and name_site == 'dns-shop':
-    #             try:
-    #                 driver.get(url)
-    #                 WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, 'container category-child')))
-    #                 print(f'Hi, {name_site} this is fourth "if"')
-    #                 driver.save_screenshot('sh_4.png')
-    #             except:
-    #                 print('page is not ready')
-
-
 def search_monitors(name_xlsx: str):
     path_to_xlsx = os.path.join(xlsx_dir, name_xlsx)
-    resurlt_xlsx = get_data_from_xlsx(path_to_xlsx)
+    result_xlsx = get_data_from_xlsx(path_to_xlsx)
 
     nice_width_list = list()
     nice_part_list = list()
     nice_vendor_list = list()
 
-    result_monitors = list()
-
-    for name in resurlt_xlsx[2]:
+    for name in result_xlsx[2]:
         nice_width_pattern = re.search(
             r'(\d+\.\d\"|\d+\b\"|\d+\,\d\"|[1]\,\d|\d+\.\d\'|\d+\w?\'|\d+\'|\d+\.\d\”|\d+\,\d)', name
         )
@@ -1820,7 +2140,7 @@ def search_monitors(name_xlsx: str):
         except:
             nice_width_list.append('')
     
-    for part in resurlt_xlsx[1]:
+    for part in result_xlsx[1]:
         better_id = part.strip().split(' ')[0].split('/')[0].split('(')
         if len(better_id) >=2:
             nice_partial = re.sub(r'[^a-zA-Z]', '',better_id[1])
@@ -1834,7 +2154,7 @@ def search_monitors(name_xlsx: str):
             better_id[0].split('#')
             nice_part_list.append(better_id[0].split('#')[0])
 
-    for vendor in resurlt_xlsx[3]:
+    for vendor in result_xlsx[3]:
         if vendor.strip() == 'Hewlett-Packard':
             nice_vendor_list.append('HP')
         elif vendor.strip() == 'Elo Touch Solutions':
@@ -1844,13 +2164,53 @@ def search_monitors(name_xlsx: str):
         else:
             nice_vendor_list.append(vendor)
 
-    search_req_mon = list(map(lambda a, x, y, z: str(a) + "/" + x + " " + y + " " + z, resurlt_xlsx[0], nice_vendor_list, nice_width_list, nice_part_list))
-    driver = DriverInitialize(headless=False)
+    search_req_mon = list(map(lambda a, x, y, z: str(a) + "/" + x + " " + y + " " + z, result_xlsx[0], nice_vendor_list, nice_width_list, nice_part_list))
+
+    result_dict_mon = grab_data(req=search_req_mon, monitors=True, mice=False, ddr=False, cartridges=False)
+    
+    with open(os.path.join(data_dir, 'result_monitors.json'), 'a', encoding='utf-8') as file:
+        json.dump(result_dict_mon, file, indent=4, ensure_ascii=False)
+
+
+def search_mice(name_xlsx: str):
+    path_to_xlsx = os.path.join(xlsx_dir, name_xlsx)
+    result_xlsx = get_data_from_xlsx(path_to_xlsx)
+
+    nice_part_list = list()
+    nice_vendor_list = list()
+
+
+    for part in result_xlsx[1]:
+        better_id = str(part).split('/')[0]
+        if 'STONE BLACK' in better_id:
+            better_id.replace('STONE BLACK', 'черный')
+            nice_part_list.append(better_id)
+        elif 'WHITE' in better_id:
+            better_id.replace('WHITE', 'белый')
+            nice_part_list.append(better_id)
+        else:
+            nice_part_list.append(better_id)
+    
+    for vendor in result_xlsx[3]:
+        nice_vendor_list.append(vendor)
+
+    search_req_mice = list(map(lambda a, x, y: str(a) + "/" + str(x) + " " + y, result_xlsx[0], nice_vendor_list, nice_part_list))
+
+    result_dict_mice = grab_data(req=search_req_mice, monitors=False, mice=True, ddr=False, cartridges=False)
+
+    with open(os.path.join(data_dir, 'result_mice.json'), 'a', encoding='utf-8') as file:
+        json.dump(result_dict_mice, file, indent=4, ensure_ascii=False)
+        
+
+def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
+    driver = DriverInitialize(headless=True)
+
+    result_dict = list()
 
     count_cur_req = 0
-    count_all_req = len(search_req_mon)
+    count_all_req = len(req)
     with driver:
-        for full_req in search_req_mon:
+        for full_req in req:
             count_cur_req += 1
             print(f'\n{full_req}\t{count_cur_req}\{count_all_req}\n')
 
@@ -1912,8 +2272,14 @@ def search_monitors(name_xlsx: str):
                                     for char_content in char_item_content:
                                         name_char = char_content.find('div', class_='CharacteristicsItem_left__ux_qb').find('div', class_='CharacteristicsItem_name__Q7B8V').find('span').text.strip()
                                         value_char = char_content.find('div', class_='CharacteristicsItem_value__fgPkc').text.strip()
-
-                                        char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site)
+                                        if monitors:
+                                            char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
+                                        elif mice:
+                                            char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
+                                        elif ddr:
+                                            char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
+                                        elif cartridges:
+                                            char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
                                         result_char_dict.update(char)
 
                                 print('\t[+] Characteristics grabed')
@@ -1966,7 +2332,14 @@ def search_monitors(name_xlsx: str):
                                     # char_item.find('span').decompose()
                                     value_char = char_item.contents[1].replace('\xa0', '')
 
-                                    char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site)
+                                    if monitors:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
+                                    elif mice:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
+                                    elif ddr:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
+                                    elif cartridges:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
                                     result_char_dict.update(char)
                                 print('\t[+] Characteristics grabed')
                             except Exception as ex:
@@ -2001,7 +2374,14 @@ def search_monitors(name_xlsx: str):
                                     name_char = char.find('div', class_='product-characteristics__spec-title').text.strip()
                                     value_char = char.find('div', class_='product-characteristics__spec-value').text.strip()
 
-                                    char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site)
+                                    if monitors:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
+                                    elif mice:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
+                                    elif ddr:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
+                                    elif cartridges:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
                                     result_char_dict.update(char)
                             print('\t[+] Characteristics grabed')
                         except Exception as ex:
@@ -2036,7 +2416,14 @@ def search_monitors(name_xlsx: str):
                                             name_char = char.find('dt').text().strip()
                                             value_char = char.find('dd').text().strip()
 
-                                            char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site)
+                                            if monitors:
+                                                char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
+                                            elif mice:
+                                                char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
+                                            elif ddr:
+                                                char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
+                                            elif cartridges:
+                                                char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
                                             result_char_dict.update(char)
                                     print('\t[+] Characteristics grabed')
                                             
@@ -2053,18 +2440,18 @@ def search_monitors(name_xlsx: str):
             for v in result_char_dict.values():
                 char_list.append(v)
             
-            result_monitors.append(
+            result_dict.append(
                 {
                     'sku': sku,
                     'characteristics': char_list
                 }
             )
+    return result_dict
 
-        with open(os.path.join(data_dir, 'result_monitors.json'), 'a', encoding='utf-8') as file:
-            json.dump(result_monitors, file, indent=4, ensure_ascii=False)
 
 def main():
-    search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
+    # search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
+    search_mice(name_xlsx='product_templates_products_mice.xlsx')
 
 
 if __name__ == '__main__':
