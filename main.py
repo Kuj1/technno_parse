@@ -2613,13 +2613,14 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                             WebDriverWait(driver, 6).until(EC.element_to_be_clickable((By.ID, 'otv3_submit'))).click()
                             time.sleep(1)
                             print('\t[+] Captcha solved')
+                            WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wrap"]')))
                         except Exception as ex:
                             print('\t[+] No captcha')
                         
-                        try:
-                            WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wrap"]')))
-                        except:
-                            continue
+                        # try:
+                        #     WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wrap"]')))
+                        # except:
+                        #     continue
 
                         item_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -2806,9 +2807,9 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
 
 def main():
-        search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
-        search_mice(name_xlsx='product_templates_products_mice.xlsx')
-        search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
+        # search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
+        # search_mice(name_xlsx='product_templates_products_mice.xlsx')
+        # search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
         search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
 
 
