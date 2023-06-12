@@ -2616,7 +2616,7 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                         print('\t[+] No captcha')
                     
                     try:
-                        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wrap"]')))
+                        WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wrap"]')))
                     except:
                         continue
 
