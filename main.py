@@ -2527,67 +2527,140 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                 req = full_req.split('/')[1].strip()
                 sku = full_req.split('/')[0].strip()
                 search_url = f'{site}{req}'
-                driver.get(search_url)
-                print(f'[!] URL: {search_url}')
+                try:
+                    driver.get(search_url)
+                    print(f'[!] URL: {search_url}')
 
-                if site == 'https://www.regard.ru/catalog?search=':
+                    if site == 'https://www.regard.ru/catalog?search=':
 
-                    nginx_soup = BeautifulSoup(driver.page_source, 'html.parser')
-                    try:
-                        too_many = nginx_soup.find('h1').text.strip()
-                    except:
-                        continue
-                
-                    if too_many == '429 Too Many Requests':
-                        time.sleep(15)
-                        driver.get(search_url)
-                        time.sleep(3)
-                        print('\t[-] Wait for response url (429)')
+                        nginx_soup = BeautifulSoup(driver.page_source, 'html.parser')
+                        try:
+                            too_many = nginx_soup.find('h1').text.strip()
+                        except:
+                            continue
                     
-                    try:
-                        WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="__next"]/div/div/main')))
-                    except:
-                        continue
+                        if too_many == '429 Too Many Requests':
+                            time.sleep(15)
+                            driver.get(search_url)
+                            time.sleep(3)
+                            print('\t[-] Wait for response url (429)')
+                        
+                        try:
+                            WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="__next"]/div/div/main')))
+                        except:
+                            continue
 
-                    item_soup = BeautifulSoup(driver.page_source, 'html.parser')
-                    try:
-                        print('\t[+] Responsed - OK')
-                        true_our_item = item_soup.find('div', class_='rendererWrapper').find('div', class_='ListingRenderer_row__0VJXB').find_all('div', class_='Card_row__6_JG5')
+                        item_soup = BeautifulSoup(driver.page_source, 'html.parser')
+                        try:
+                            print('\t[+] Responsed - OK')
+                            true_our_item = item_soup.find('div', class_='rendererWrapper').find('div', class_='ListingRenderer_row__0VJXB').find_all('div', class_='Card_row__6_JG5')
 
-                        if len(true_our_item) == 1:
-                            item = item_soup.find('div', class_='rendererWrapper').find('div', class_='ListingRenderer_row__0VJXB').find('div', class_='Card_row__6_JG5').find('a').get('href').strip()
-                            item_url = f'https://www.regard.ru/{item}'
+                            if len(true_our_item) == 1:
+                                item = item_soup.find('div', class_='rendererWrapper').find('div', class_='ListingRenderer_row__0VJXB').find('div', class_='Card_row__6_JG5').find('a').get('href').strip()
+                                item_url = f'https://www.regard.ru/{item}'
 
-                            driver.get(item_url)
-                            time.sleep(1)
+                                driver.get(item_url)
+                                time.sleep(1)
 
-                            char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
+                                char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-                            try:
-                                image_item = char_item_soup.find('div', class_='product-slider-container').find('div', class_='swiper-wrapper').find('div', class_='swiper-zoom-container').find('img').get('src')
-                                img = {
-                                    'img': {
-                                        'img': f'https://www.regard.ru{image_item}'
+                                try:
+                                    image_item = char_item_soup.find('div', class_='product-slider-container').find('div', class_='swiper-wrapper').find('div', class_='swiper-zoom-container').find('img').get('src')
+                                    img = {
+                                        'img': {
+                                            'img': f'https://www.regard.ru{image_item}'
+                                        }
                                     }
-                                }
 
-                                result_char_dict.update(img)
-                            except:
-                                print('\t[-] Image not found')
+                                    result_char_dict.update(img)
+                                except:
+                                    print('\t[-] Image not found')
 
-                            try:
+                                try:
 
-                                char_item_wrap = char_item_soup.find('div', class_='ProductCharacteristics_wrap__3RjsG').find('div', class_='ProductCharacteristics_masonry__Ut6Zp').find_all('section', class_='CharacteristicsSection_section__ZctKC')
+                                    char_item_wrap = char_item_soup.find('div', class_='ProductCharacteristics_wrap__3RjsG').find('div', class_='ProductCharacteristics_masonry__Ut6Zp').find_all('section', class_='CharacteristicsSection_section__ZctKC')
 
-                            except Exception as ex:
-                                print(ex)   
+                                except Exception as ex:
+                                    print(ex)   
 
-                            try:
-                                for char_item in char_item_wrap:
-                                    char_item_content = char_item.find('div', class_='CharacteristicsSection_content__5BpzM').find_all('div', class_='CharacteristicsItem_item__QnlK2')
-                                    for char_content in char_item_content:
-                                        name_char = char_content.find('div', class_='CharacteristicsItem_left__ux_qb').find('div', class_='CharacteristicsItem_name__Q7B8V').find('span').text.strip()
-                                        value_char = char_content.find('div', class_='CharacteristicsItem_value__fgPkc').text.strip()
+                                try:
+                                    for char_item in char_item_wrap:
+                                        char_item_content = char_item.find('div', class_='CharacteristicsSection_content__5BpzM').find_all('div', class_='CharacteristicsItem_item__QnlK2')
+                                        for char_content in char_item_content:
+                                            name_char = char_content.find('div', class_='CharacteristicsItem_left__ux_qb').find('div', class_='CharacteristicsItem_name__Q7B8V').find('span').text.strip()
+                                            value_char = char_content.find('div', class_='CharacteristicsItem_value__fgPkc').text.strip()
+                                            if monitors:
+                                                char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
+                                            elif mice:
+                                                char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
+                                            elif ddr:
+                                                char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
+                                            elif cartridges:
+                                                char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
+                                            result_char_dict.update(char)
+
+                                    print('\t[+] Characteristics grabed')
+                                            
+                                except Exception as ex:
+                                    print(ex)
+                                    print('\t[-] No characteristics')
+                            else:
+                                print('\t[-] Item don\'t found') 
+                        except:
+                            print('\t[-] Item don\'t found')
+                    elif site == 'https://www.onlinetrade.ru/sitesearch.html?query=':
+                        try:
+                            WebDriverWait(driver, 6).until(EC.element_to_be_clickable((By.ID, 'otv3_submit'))).click()
+                            time.sleep(1)
+                            print('\t[+] Captcha solved')
+                        except Exception as ex:
+                            print('\t[+] No captcha')
+                        
+                        try:
+                            WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wrap"]')))
+                        except:
+                            continue
+
+                        item_soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+                        try:
+                            true_our_choice = item_soup.find_all('div', class_='indexGoods__item')
+                            if len(true_our_choice) == 1:
+                                item = item_soup.find('div', class_='goods__items').find('div', class_='indexGoods__item').find('div', class_='indexGoods__item__flexCover').find('a').get('href').strip()
+                                item_url = f'https://www.onlinetrade.ru/{item}'
+
+                                driver.get(item_url)
+                                time.sleep(1)
+
+                                # WebDriverWait(driver, 12).until(EC.element_to_be_clickable((By.ID, 'ui-id-2'))).click()
+
+                                char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+                                try:
+                                    image_item = char_item_soup.find('div', class_='productPage__displayedItem').find('div', class_='productPage__displayedItem__images').find('div', class_='productPage__displayedItem__images__big').find('a').get('href')
+                                    img = {
+                                        'img': {
+                                            'img': image_item
+                                        }
+                                    }
+
+                                    result_char_dict.update(img)
+                                except:
+                                    print('\t[-] Image not found')
+
+                                try:
+
+                                    char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
+
+                                except Exception as ex:
+                                    print(ex)
+
+                                try:
+                                    for char_item in char_item_wrap:
+                                        name_char = char_item.find('span').text.strip().replace(':', '')
+                                        # char_item.find('span').decompose()
+                                        value_char = char_item.contents[1].replace('\xa0', '')
+
                                         if monitors:
                                             char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
                                         elif mice:
@@ -2597,46 +2670,29 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                         elif cartridges:
                                             char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
                                         result_char_dict.update(char)
-
-                                print('\t[+] Characteristics grabed')
-                                        
-                            except Exception as ex:
-                                print(ex)
-                                print('\t[-] No characteristics')
-                        else:
-                            print('\t[-] Item don\'t found') 
-                    except:
-                        print('\t[-] Item don\'t found')
-                elif site == 'https://www.onlinetrade.ru/sitesearch.html?query=':
-                    try:
-                        WebDriverWait(driver, 6).until(EC.element_to_be_clickable((By.ID, 'otv3_submit'))).click()
-                        time.sleep(1)
-                        print('\t[+] Captcha solved')
-                    except Exception as ex:
-                        print('\t[+] No captcha')
-                    
-                    try:
-                        WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wrap"]')))
-                    except:
-                        continue
-
-                    item_soup = BeautifulSoup(driver.page_source, 'html.parser')
-
-                    try:
-                        true_our_choice = item_soup.find_all('div', class_='indexGoods__item')
-                        if len(true_our_choice) == 1:
-                            item = item_soup.find('div', class_='goods__items').find('div', class_='indexGoods__item').find('div', class_='indexGoods__item__flexCover').find('a').get('href').strip()
-                            item_url = f'https://www.onlinetrade.ru/{item}'
-
-                            driver.get(item_url)
+                                    print('\t[+] Characteristics grabed')
+                                except Exception as ex:
+                                    print(ex)
+                                    print('\t[-] No characteristics')
+                            else:
+                                print('\t[-] Item don\'t found') 
+                        except:
+                            print('\t[-] Item don\'t found')   
+                    elif site ==  'https://www.dns-shop.ru/search/?q=':
+                        try:
+                            WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, 'product-card-description-specs')))
                             time.sleep(1)
+                            # driver.find_element(By.CLASS_NAME, 'product-characteristics__expand_in').click()
+                            cur_url = driver.current_url
 
-                            # WebDriverWait(driver, 12).until(EC.element_to_be_clickable((By.ID, 'ui-id-2'))).click()
+                            driver.get(f'{cur_url}characteristics/')
 
+                            time.sleep(1)
+                            
                             char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
                             try:
-                                image_item = char_item_soup.find('div', class_='productPage__displayedItem').find('div', class_='productPage__displayedItem__images').find('div', class_='productPage__displayedItem__images__big').find('a').get('href')
+                                image_item = char_item_soup.find('div', class_='product-card-top__images').find('div', class_='product-images-slider').find('picture', class_='product-images-slider__main').find('source').get('srcset')
                                 img = {
                                     'img': {
                                         'img': image_item
@@ -2648,146 +2704,94 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                 print('\t[-] Image not found')
 
                             try:
-
-                                char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
-
+                                char_item_wrapper = char_item_soup.find('div', class_='product-card-description').find('div', class_='product-card-description-specs').find('div', class_='product-characteristics').find('div', class_='product-characteristics-content').find_all('div', class_='product-characteristics__group')
                             except Exception as ex:
                                 print(ex)
 
                             try:
-                                for char_item in char_item_wrap:
-                                    name_char = char_item.find('span').text.strip().replace(':', '')
-                                    # char_item.find('span').decompose()
-                                    value_char = char_item.contents[1].replace('\xa0', '')
+                                for char_item_group in char_item_wrapper:
+                                    char_item = char_item_group.find_all('div', class_='product-characteristics__spec')
+                                    for char in char_item:
+                                        name_char = char.find('div', class_='product-characteristics__spec-title').text.strip()
+                                        value_char = char.find('div', class_='product-characteristics__spec-value').text.strip()
 
-                                    if monitors:
-                                        char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
-                                    elif mice:
-                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
-                                    elif ddr:
-                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
-                                    elif cartridges:
-                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
-                                    result_char_dict.update(char)
+                                        if monitors:
+                                            char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
+                                        elif mice:
+                                            char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
+                                        elif ddr:
+                                            char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
+                                        elif cartridges:
+                                            char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
+                                        result_char_dict.update(char)
                                 print('\t[+] Characteristics grabed')
                             except Exception as ex:
                                 print(ex)
                                 print('\t[-] No characteristics')
-                        else:
-                            print('\t[-] Item don\'t found') 
-                    except:
-                        print('\t[-] Item don\'t found')   
-                elif site ==  'https://www.dns-shop.ru/search/?q=':
-                    try:
-                        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, 'product-card-description-specs')))
-                        time.sleep(1)
-                        # driver.find_element(By.CLASS_NAME, 'product-characteristics__expand_in').click()
-                        cur_url = driver.current_url
 
-                        driver.get(f'{cur_url}characteristics/')
-
-                        time.sleep(1)
-                        
-                        char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
-
-                        try:
-                            image_item = char_item_soup.find('div', class_='product-card-top__images').find('div', class_='product-images-slider').find('picture', class_='product-images-slider__main').find('source').get('srcset')
-                            img = {
-                                'img': {
-                                    'img': image_item
-                                }
-                            }
-
-                            result_char_dict.update(img)
-                        except:
-                            print('\t[-] Image not found')
-
-                        try:
-                            char_item_wrapper = char_item_soup.find('div', class_='product-card-description').find('div', class_='product-card-description-specs').find('div', class_='product-characteristics').find('div', class_='product-characteristics-content').find_all('div', class_='product-characteristics__group')
                         except Exception as ex:
-                            print(ex)
-
+                            print('\t[-] Item don\'t found')  
+                    elif site == 'https://www.novo-market.ru/search/?q=':
                         try:
-                            for char_item_group in char_item_wrapper:
-                                char_item = char_item_group.find_all('div', class_='product-characteristics__spec')
-                                for char in char_item:
-                                    name_char = char.find('div', class_='product-characteristics__spec-title').text.strip()
-                                    value_char = char.find('div', class_='product-characteristics__spec-value').text.strip()
-
-                                    if monitors:
-                                        char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
-                                    elif mice:
-                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
-                                    elif ddr:
-                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
-                                    elif cartridges:
-                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
-                                    result_char_dict.update(char)
-                            print('\t[+] Characteristics grabed')
-                        except Exception as ex:
-                            print(ex)
-                            print('\t[-] No characteristics')
-
-                    except Exception as ex:
-                        print('\t[-] Item don\'t found')  
-                elif site == 'https://www.novo-market.ru/search/?q=':
-                    try:
-                        WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.CLASS_NAME, 'products')))
-                        
-                        wrap_soup = BeautifulSoup(driver.page_source, 'html_parser')
-                        title_item = wrap_soup.find_all('div', class_='xml_article')
-                        if len(title_item) == 1:
-                            try:
-                                item_url = wrap_soup.find('a', class_='js-detail_page_url').get('href').strip()
-
-                                driver.get(f'https://www.novo-market.ru{item_url}')
-                            except Exception as ex:
-                                print(ex)
-
-                            try:
-                                image_item = char_item_soup.find('div', class_='product-gallery').find('div', class_='product-detail-carousel__images').find('div', class_='preview-wrap').find('a').find('imag').get('src')
-                                img = {
-                                    'img': {
-                                        'img': f'https://www.novo-market.ru{image_item}'
-                                    }
-                                }
-
-                                result_char_dict.update(img)
-                            except:
-                                print('\t[-] Image not found')
-
-                            try:
-                                char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
-
-                                char_tab = char_item_soup.find('div', attrs={'id': 'properties'}).find_all('div', clas_='tech-info-block')
-
+                            WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.CLASS_NAME, 'products')))
+                            
+                            wrap_soup = BeautifulSoup(driver.page_source, 'html_parser')
+                            title_item = wrap_soup.find_all('div', class_='xml_article')
+                            if len(title_item) == 1:
                                 try:
-                                    for char_block in char_tab:
-                                        char_miniblock = char_block.find('dl', class_='expand-content').find_all('div')
-                                        for char in char_miniblock:
-                                            name_char = char.find('dt').text().strip()
-                                            value_char = char.find('dd').text().strip()
+                                    item_url = wrap_soup.find('a', class_='js-detail_page_url').get('href').strip()
 
-                                            if monitors:
-                                                char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
-                                            elif mice:
-                                                char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
-                                            elif ddr:
-                                                char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
-                                            elif cartridges:
-                                                char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
-                                            result_char_dict.update(char)
-                                    print('\t[+] Characteristics grabed')
-                                            
+                                    driver.get(f'https://www.novo-market.ru{item_url}')
                                 except Exception as ex:
                                     print(ex)
 
-                            except Exception as ex:
-                                print(ex)
-                        else:
-                            print('\t[-] Item don\'t found') 
-                    except:
-                        print('\t[-] Item don\'t found')  
+                                try:
+                                    image_item = char_item_soup.find('div', class_='product-gallery').find('div', class_='product-detail-carousel__images').find('div', class_='preview-wrap').find('a').find('imag').get('src')
+                                    img = {
+                                        'img': {
+                                            'img': f'https://www.novo-market.ru{image_item}'
+                                        }
+                                    }
+
+                                    result_char_dict.update(img)
+                                except:
+                                    print('\t[-] Image not found')
+
+                                try:
+                                    char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+                                    char_tab = char_item_soup.find('div', attrs={'id': 'properties'}).find_all('div', clas_='tech-info-block')
+
+                                    try:
+                                        for char_block in char_tab:
+                                            char_miniblock = char_block.find('dl', class_='expand-content').find_all('div')
+                                            for char in char_miniblock:
+                                                name_char = char.find('dt').text().strip()
+                                                value_char = char.find('dd').text().strip()
+
+                                                if monitors:
+                                                    char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
+                                                elif mice:
+                                                    char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
+                                                elif ddr:
+                                                    char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
+                                                elif cartridges:
+                                                    char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
+                                                result_char_dict.update(char)
+                                        print('\t[+] Characteristics grabed')
+                                                
+                                    except Exception as ex:
+                                        print(ex)
+
+                                except Exception as ex:
+                                    print(ex)
+                            else:
+                                print('\t[-] Item don\'t found') 
+                        except:
+                            print('\t[-] Item don\'t found')  
+                except Exception as ex:
+                    print(ex)
+                    continue
 
             for v in result_char_dict.values():
                 char_list.append(v)
@@ -2802,10 +2806,10 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
 
 def main():
-        # search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
+        search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
         # search_mice(name_xlsx='product_templates_products_mice.xlsx')
         # search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
-        search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
+        # search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
 
 
 if __name__ == '__main__':
