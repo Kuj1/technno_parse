@@ -1179,6 +1179,21 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 )
             except:
                 pass
+        elif name_char == 'Страна-производитель':
+            try:
+                each_one_char.update(
+                    
+                    {
+                        'Страна-производитель': {
+                            'value': value_char.strip(),
+                            'char_name': 'Страна-производитель',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
     elif mice:
         if name_char == 'Материал изготовления':
             try:
