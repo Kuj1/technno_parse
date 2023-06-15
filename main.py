@@ -1949,7 +1949,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 )
             except:
                 pass
-        elif name_char == 'Страна-производитель ':
+        elif name_char == 'Страна-производитель':
             try:
                 each_one_char.update(
                     {
@@ -2103,6 +2103,48 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 )
             except:
                 pass
+        elif name_char == 'Частота':
+            try:
+                each_one_char.update(
+                    {
+                        'Частота': {
+                            'value': value_char.strip(),
+                            'char_name': 'Частота',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Объем одного модуля памяти':
+            try:
+                each_one_char.update(
+                    {
+                        'Объем одного модуля памяти': {
+                            'value': value_char.strip(),
+                            'char_name': 'Объем одного модуля памяти',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Суммарный объем памяти всего комплекта':
+            try:
+                each_one_char.update(
+                    {
+                        'Суммарный объем памяти всего комплекта': {
+                            'value': value_char.strip(),
+                            'char_name': 'Суммарный объем памяти всего комплекта',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
         elif name_char == 'Подсветка элементов платы':
             try:
                 each_one_char.update(
@@ -2110,6 +2152,48 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Подсветка элементов платы': {
                             'value': value_char.strip(),
                             'char_name': 'Подсветка элементов платы',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Количество чипов модуля':
+            try:
+                each_one_char.update(
+                    {
+                        'Количество чипов модуля': {
+                            'value': value_char.strip(),
+                            'char_name': 'Количество чипов модуля',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Двухсторонняя установка чипов':
+            try:
+                each_one_char.update(
+                    {
+                        'Подсветка элементов платы': {
+                            'value': value_char.strip(),
+                            'char_name': 'Подсветка элементов платы',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Тип':
+            try:
+                each_one_char.update(
+                    {
+                        'Тип': {
+                            'value': value_char.strip(),
+                            'char_name': 'Тип',
                             'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
                         }
@@ -2376,6 +2460,48 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 )
             except:
                 pass
+        elif name_char == 'Наличие чипа':
+            try:
+                each_one_char.update(
+                    {
+                        'Наличие чипа': {
+                            'value': value_char.strip(),
+                            'char_name': 'Наличие чипа',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Емкость':
+            try:
+                each_one_char.update(
+                    {
+                        'Емкость': {
+                            'value': value_char.strip(),
+                            'char_name': 'Емкость',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
+        elif name_char == 'Вид':
+            try:
+                each_one_char.update(
+                    {
+                        'Вид': {
+                            'value': value_char.strip(),
+                            'char_name': 'Вид',
+                            'vid_name': 'Обычный',
+                            'unit_name': '(без наименования)'
+                        }
+                    }
+                )
+            except:
+                pass
     return each_one_char
 
 
@@ -2452,7 +2578,7 @@ def search_mice(name_xlsx: str):
 
     search_req_mice = list(map(lambda a, x, y: str(a) + "/" + str(x) + " " + y, result_xlsx[0], nice_vendor_list, nice_part_list))
 
-    result_dict_mice = grab_data(req=search_req_mice, monitors=False, mice=False, ddr=True, cartridges=False)
+    result_dict_mice = grab_data(req=search_req_mice, monitors=False, mice=True, ddr=False, cartridges=False)
 
     with open(os.path.join(data_dir, 'result_mice.json'), 'a', encoding='utf-8') as file:
         json.dump(result_dict_mice, file, indent=4, ensure_ascii=False)
@@ -2477,7 +2603,7 @@ def search_ddr(name_xlsx:str):
 
     search_req_ddr = list(map(lambda a, x, y: str(a) + "/" + str(x) + " " + y, result_xlsx[0], nice_vendor_list, nice_part_list))
 
-    result_dict_ddr = grab_data(req=search_req_ddr, monitors=False, mice=True, ddr=True, cartridges=False)
+    result_dict_ddr = grab_data(req=search_req_ddr, monitors=False, mice=False, ddr=True, cartridges=False)
 
     with open(os.path.join(data_dir, 'result_ddr.json'), 'a', encoding='utf-8') as file:
         json.dump(result_dict_ddr, file, indent=4, ensure_ascii=False)
@@ -2502,7 +2628,7 @@ def search_cartridges(name_xlsx:str):
 
     search_req_cartridges = list(map(lambda a, x, y: str(a) + "/" + str(x) + " " + y, result_xlsx[0], nice_vendor_list, nice_part_list))
 
-    result_dict_cartridges = grab_data(req=search_req_cartridges, monitors=False, mice=True, ddr=False, cartridges=True)
+    result_dict_cartridges = grab_data(req=search_req_cartridges, monitors=False, mice=False, ddr=False, cartridges=True)
 
     with open(os.path.join(data_dir, 'result_cartridges.json'), 'a', encoding='utf-8') as file:
         json.dump(result_dict_cartridges, file, indent=4, ensure_ascii=False)
@@ -2529,6 +2655,7 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                 search_url = f'{site}{req}'
                 try:
                     driver.get(search_url)
+                    
                     print(f'[!] URL: {search_url}')
 
                     if site == 'https://www.regard.ru/catalog?search=':
@@ -2546,7 +2673,7 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                             print('\t[-] Wait for response url (429)')
                         
                         try:
-                            WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="__next"]/div/div/main')))
+                            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, '//*[@id="__next"]/div/div/main')))
                         except:
                             continue
 
@@ -2705,26 +2832,26 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                 print('\t[-] Image not found')
 
                             try:
-                                char_item_wrapper = char_item_soup.find('div', class_='product-card-description').find('div', class_='product-card-description-specs').find('div', class_='product-characteristics').find('div', class_='product-characteristics-content').find_all('div', class_='product-characteristics__group')
+                                char_item_wrapper = char_item_soup.find('div', class_='product-card-description').find('div', class_='product-card-description-specs').find('div', class_='product-characteristics').find('div', class_='product-characteristics-content')
                             except Exception as ex:
                                 print(ex)
 
                             try:
-                                for char_item_group in char_item_wrapper:
-                                    char_item = char_item_group.find_all('div', class_='product-characteristics__spec')
-                                    for char in char_item:
-                                        name_char = char.find('div', class_='product-characteristics__spec-title').text.strip()
-                                        value_char = char.find('div', class_='product-characteristics__spec-value').text.strip()
+                                # for char_item_group in char_item_wrapper:
+                                char_item = char_item_wrapper.find_all('div', class_='product-characteristics__spec')
+                                for char in char_item:
+                                    name_char = char.find('div', class_='product-characteristics__spec-title').text.strip()
+                                    value_char = char.find('div', class_='product-characteristics__spec-value').text.strip()
 
-                                        if monitors:
-                                            char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
-                                        elif mice:
-                                            char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
-                                        elif ddr:
-                                            char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
-                                        elif cartridges:
-                                            char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
-                                        result_char_dict.update(char)
+                                    if monitors:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=True, site=site, mice=False, ddr=False, cartridges=False)
+                                    elif mice:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=True, ddr=False, cartridges=False)
+                                    elif ddr:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=True, cartridges=False)
+                                    elif cartridges:
+                                        char = get_char(name_char=name_char, value_char=value_char, monitors=False, site=site, mice=False, ddr=False, cartridges=True)
+                                    result_char_dict.update(char)
                                 print('\t[+] Characteristics grabed')
                             except Exception as ex:
                                 print(ex)
@@ -2808,9 +2935,9 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
 def main():
         # search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
-        # search_mice(name_xlsx='product_templates_products_mice.xlsx')
+        search_mice(name_xlsx='product_templates_products_mice.xlsx')
         # search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
-        search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
+        # search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
 
 
 if __name__ == '__main__':
