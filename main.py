@@ -196,7 +196,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Вес': {
-                            'value': value_char.strip().replace('кг&nbsp;', '').replace('кг ', '').strip(),
+                            'value': value_char.strip().replace('кг&nbsp;', '').replace('кг ', '').replace('кг', '').strip(),
                             'char_name': 'Вес',
                             'vid_name': 'Обычный',
                             'unit_name': 'килограмм'
@@ -221,36 +221,85 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 pass
         elif name_char == 'Встроенные динамики' or name_char == 'Мощность динамиков':
             try:
-                try:
-                    each_one_char.update(
-                        {
-                            'Мощность динамиков (на канал)': {
-                                'value': value_char.split(',')[1].strip().replace('Вт', '').split(),
-                                'char_name': 'Мощность динамиков (на канал)',
-                                'vid_name': 'Обычный',
-                                'unit_name': 'Вт'
+                if len(value_char) <= 20:
+                    try:
+                        count_char_dyn = value_char.strip().replace('Вт', '').replace(' ', '').split('(')[-1].replace(')', '').split('x')[0]
+                        power_char_dyn = value_char.strip().replace('Вт', '').replace(' ', '').split('(')[-1].replace(')', '').split('x')[1]       
+                        each_one_char.update(
+                            {
+                                'Мощность динамиков (на канал)': {
+                                    'value': power_char_dyn,
+                                    'char_name': 'Мощность динамиков (на канал)',
+                                    'vid_name': 'Обычный',
+                                    'unit_name': 'Вт'
+                                }
                             }
-                        }
-                    )
-                except:
-                    each_one_char.update(
-                        {
-                            'Количество и мощность встроенных динамиков': {
-                                'value': value_char.split.strip().replace('Вт', ''),
-                                'char_name': 'Количество и мощность встроенных динамиков',
-                                'vid_name': 'Обычный',
-                                'unit_name': 'Вт'
+                        )
+                        each_one_char.update(
+                            {
+                                'Количество встроенных динамиков': {
+                                    'value': count_char_dyn,
+                                    'char_name': 'Количество встроенных динамиков',
+                                    'vid_name': 'Обычный',
+                                    'unit_name': 'Вт'
+                                }
                             }
-                        }
-                    )
+                        )
+                    except IndexError:
+                        try:
+                            count_char_dyn = value_char.strip().replace('Вт', '').replace(' ', '').split('(')[-1].replace(')', '').split('х')[0]
+                            power_char_dyn = value_char.strip().replace('Вт', '').replace(' ', '').split('(')[-1].replace(')', '').split('х')[1]  
+                            each_one_char.update(
+                                {
+                                    'Мощность динамиков (на канал)': {
+                                        'value': power_char_dyn,
+                                        'char_name': 'Мощность динамиков (на канал)',
+                                        'vid_name': 'Обычный',
+                                        'unit_name': 'Вт'
+                                    }
+                                }
+                            )
+                            each_one_char.update(
+                                {
+                                    'Количество встроенных динамиков': {
+                                        'value': count_char_dyn,
+                                        'char_name': 'Количество встроенных динамиков',
+                                        'vid_name': 'Обычный',
+                                        'unit_name': 'Вт'
+                                    }
+                                }
+                            )
+                        except IndexError:
+                            count_char_dyn = value_char.strip().replace('Вт', '').replace(' ', '').split('(')[-1].replace(')', '').split('+')[0].split('х')[0]
+                            power_char_dyn = value_char.strip().replace('Вт', '').replace(' ', '').split('(')[-1].replace(')', '').split('+')[0].split('х')[1]
+                            each_one_char.update(
+                                {
+                                    'Мощность динамиков (на канал)': {
+                                        'value': power_char_dyn,
+                                        'char_name': 'Мощность динамиков (на канал)',
+                                        'vid_name': 'Обычный',
+                                        'unit_name': 'Вт'
+                                    }
+                                }
+                            )
+                            each_one_char.update(
+                                {
+                                    'Количество встроенных динамиков': {
+                                        'value': count_char_dyn,
+                                        'char_name': 'Количество встроенных динамиков',
+                                        'vid_name': 'Обычный',
+                                        'unit_name': 'Вт'
+                                    }
+                                }
+                            )
             except:
                 pass
-        elif name_char == 'Разъёмы' or name_char == 'Видео разъемы' or name_char == 'Порты и разъемы':
+        elif name_char == 'Разъёмы' or name_char == 'Видео разъемы' or name_char == 'Порты и разъемы' or name_char == 'Интерфейсы' or name_char == 'Другие разъемы':
             try:
                 each_one_char.update(
                     {
                         'Разъёмы': {
-                            'value': value_char.split(','),
+                            'value': value_char.split(', '),
                             'char_name': 'Разъёмы',
                             'vid_name': 'несколько из',
                             'unit_name': '(без наименования)'
@@ -357,7 +406,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Динамическая контрастность': {
-                            'value': value_char.strip(),
+                            'value': value_char.strip().replace(' ', '').replace('М', '000000').strip(),
                             'char_name': 'Динамическая контрастность',
                             'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
@@ -406,21 +455,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                     )
             except:
                 pass
-        elif name_char == 'Изогнутый экран':
-            try:
-                each_one_char.update(
-                    {
-                        'Изогнутый экран': {
-                            'value': value_char.split(',')[0],
-                            'char_name': 'Изогнутый экран',
-                            'vid_name': 'Обычный',
-                            'unit_name': '(без наименования)'
-                        }
-                    }
-                )
-            except:
-                pass
-        elif name_char == 'LED подсветка' or name_char == 'Светодиодная подсветка (LED)':
+        elif name_char == 'Подсветка матрицы' or name_char == 'Подсветка':
             try:
                 each_one_char.update(
                     {
@@ -590,7 +625,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                     each_one_char.update(
                         {
                             'Крепление на стену (VESA)': {
-                                'value': f'есть, {value_char.replace('мм', '').replace(' ', '').strip()}',
+                                'value': f'есть, {value_char.replace("мм", "").replace(" ", "").strip()}',
                                 'char_name': 'Крепление на стену (VESA)',
                                 'vid_name': 'Обычный',
                                 'unit_name': '(без наименования)'
@@ -774,9 +809,9 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
             try:
                 each_one_char.update(
                     {
-                        'Радиус изогнутости': {
+                        'Изогнутый экран': {
                             'value': 'да',
-                            'char_name': 'Радиус изогнутости',
+                            'char_name': 'Изогнутый экран',
                             'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
@@ -830,8 +865,8 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
             try:
                 each_one_char.update(
                     {
-                        'Интерфейсы': {
-                            'value': f'USB x{value_char.strip()}',
+                        'Интерфейсы USB': {
+                            'value': f'USB x{value_char.strip().replace("шт", "")}',
                             'char_name': 'Интерфейсы',
                             'vid_name': 'один из',
                             'unit_name': '(без наименования)'
@@ -938,22 +973,6 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 ) 
             except:
                 pass
-        elif name_char == 'Подсветка':
-            try:
-                each_one_char.update(
-                    {
-                        'Подсветка': {
-                            'value': value_char.strip(),
-                            'char_name': 'Подсветка',
-                            'vid_name': 'один из',
-                            'unit_name': '(без наименования)'
-                        }
-                    }
-                ) 
-            except:
-                pass
-            if value_char == 'нет':
-                pass
         elif name_char == 'Ширина без подставки':
             try:
                 each_one_char.update(
@@ -1001,7 +1020,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Вес': {
-                            'value': value_char.strip().replace('кг', '').replace('&nbsp;', '').replace('кг&nbsp;', '').strip(),
+                            'value': value_char.strip().replace('кг', '').replace('&nbsp;', '').replace('кг&nbsp;', '').replace('кг ', '').strip(),
                             'char_name': 'Вес',
                             'vid_name': 'один из',
                             'unit_name': '(без наименования)'
@@ -1015,7 +1034,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Вес нетто': {
-                            'value': value_char.strip().replace('кг', '').replace('&nbsp;', '').replace('кг&nbsp;', '').strip(),
+                            'value': value_char.strip().replace('кг', '').replace('&nbsp;', '').replace('кг&nbsp;', '').replace('кг ', '').strip(),
                             'char_name': 'Вес нетто',
                             'vid_name': 'один из',
                             'unit_name': '(без наименования)'
@@ -1079,21 +1098,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                     }
                 ) 
             except:
-                pass
-        elif name_char == 'Интерфейсы' or name_char == 'Другие разъемы':
-            try:
-                each_one_char.update(
-                    {
-                        'Интерфейсы': {
-                            'value': value_char.strip().split(','),
-                            'char_name': 'Интерфейсы',
-                            'vid_name': 'один из',
-                            'unit_name': '(без наименования)'
-                        }
-                    }
-                ) 
-            except:
-                pass         
+                pass        
         elif name_char == 'Стандарты':
             try:
                 each_one_char.update(
@@ -3104,9 +3109,9 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
 
 def main():
-        # search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
+        search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
         # search_mice(name_xlsx='product_templates_products_mice.xlsx')
-        search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
+        # search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
         # search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
 
 
