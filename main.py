@@ -866,7 +866,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Интерфейсы USB': {
-                            'value': f'USB x{value_char.strip().replace("шт", "")}',
+                            'value': f'USB x{value_char.strip().replace("шт", "").strip()}',
                             'char_name': 'Интерфейсы',
                             'vid_name': 'один из',
                             'unit_name': '(без наименования)'
