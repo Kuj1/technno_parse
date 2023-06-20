@@ -3031,8 +3031,6 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                     result_char_dict.update(img)
                                 except:
                                     print('\t[-] Image not found')
-                                
-                                time.sleep(3)
 
                                 try:
                                     char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
