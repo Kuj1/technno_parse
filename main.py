@@ -1243,30 +1243,29 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
             except:
                 pass
         elif name_char == 'Вес':
-            clear_value = value_char.replace('кг', '').replace('г', '').strip()
             try:
-                if 'г' in value_char:
+                if 'кг' in value_char:
                     each_one_char.update(
                         {
                             'Вес': {
-                                'value': value_char.strip(),
-                                'char_name': 'Вес',
-                                'vid_name': 'Обычный',
-                                'unit_name': '(без наименования)'
-                            }
-                        }
-                    )
-                elif 'кг' in value_char:
-                    each_one_char.update(
-                        {
-                            'Вес': {
-                                'value': float(clear_value) * 1000,
+                                'value': float(value_char.replace('кг', '').strip()) * 1000,
                                 'char_name': 'Вес',
                                 'vid_name': 'Обычный',
                                 'unit_name': '(без наименования)'
                             }
                         }
                     ) 
+                else:
+                    each_one_char.update(
+                        {
+                            'Вес': {
+                                'value': value_char.replace('г', '').strip(),
+                                'char_name': 'Вес',
+                                'vid_name': 'Обычный',
+                                'unit_name': '(без наименования)'
+                            }
+                        }
+                    )
             except:
                 pass
         elif name_char == 'Программируемые кнопки':
@@ -1593,8 +1592,37 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         }
                     }
                 )
-            except:
-                pass
+            except IndexError:
+                each_one_char.update(
+                    {
+                        'Ширина': {
+                            'value': value_char.split('х')[0].strip().replace('мм', '').strip(),
+                            'char_name': 'Ширина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Высота': {
+                            'value': value_char.split('х')[1].strip().replace('мм', '').strip(),
+                            'char_name': 'Высота',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Глубина': {
+                            'value': value_char.split('х')[2].replace('мм', '').strip(),
+                            'char_name': 'Глубина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
         elif name_char == 'Ширина':
             try:
                 each_one_char.update(
@@ -1628,7 +1656,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Длина': {
-                            'value': value_char.strip(),
+                            'value': value_char.strip().replace('мм', '').strip(),
                             'char_name': 'Длина',
                             'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
@@ -1786,7 +1814,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Вес в упаковке': {
-                            'value': value_char.strip(),
+                            'value': value_char.strip().replace('г', '').strip(),
                             'char_name': 'Вес в упаковке',
                             'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
@@ -3108,8 +3136,8 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
 
 def main():
-        search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
-        # search_mice(name_xlsx='product_templates_products_mice.xlsx')
+        # search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
+        search_mice(name_xlsx='product_templates_products_mice.xlsx')
         # search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
         # search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
 
