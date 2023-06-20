@@ -3032,8 +3032,7 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                 except:
                                     print('\t[-] Image not found')
 
-                                try:
-                                    char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
+                                char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
 
                                 try:
                                     for char_item in char_item_wrap:
