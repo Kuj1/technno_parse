@@ -3016,8 +3016,6 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                 driver.get(item_url)
                                 time.sleep(3)
 
-                                # WebDriverWait(driver, 12).until(EC.element_to_be_clickable((By.ID, 'goods_content')))
-
                                 char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
                                 try:
