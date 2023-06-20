@@ -3014,7 +3014,7 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                 item_url = f'https://www.onlinetrade.ru/{item}'
 
                                 driver.get(item_url)
-                                time.sleep(5)
+                                time.sleep(3)
 
                                 # WebDriverWait(driver, 12).until(EC.element_to_be_clickable((By.ID, 'ui-id-2'))).click()
 
@@ -3031,6 +3031,8 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                     result_char_dict.update(img)
                                 except:
                                     print('\t[-] Image not found')
+                                
+                                time.sleep(3)
 
                                 try:
                                     char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
