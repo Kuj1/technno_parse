@@ -65,53 +65,36 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
         if name_char == 'Разрешение экрана' or name_char == 'Максимальное разрешение':
             if site == 'https://www.regard.ru/catalog?search=' or site == 'https://www.novo-market.ru/search/?q=':
                 try:
-                    value_char.split(' ')
-                    try:
-                        each_one_char.update(
-                            
-                            {
-                                'Соотношение сторон': {
-                                    'value': value_char[1].replace(')', '').replace('(', '').strip(),
-                                    'char_name': 'Соотношение сторон',
-                                    'vid_name': 'Обычный',
-                                    'unit_name': '(без наименования)'
-                                }
+                    each_one_char.update(
+                        
+                        {
+                            'Соотношение сторон': {
+                                'value': value_char.replace('пикс.', '').split(' ')[1].replace('(', '').replace(')', '').strip(),
+                                'char_name': 'Соотношение сторон',
+                                'vid_name': 'Обычный',
+                                'unit_name': '(без наименования)'
                             }
-                        )
-                        each_one_char.update(
-                            {   
-                                'Максимальное разрешение': {
-                                    'value': value_char[0].strip(),
-                                    'char_name': 'Максимальное разрешение',
-                                    'vid_name': 'Обычный',
-                                    'unit_name': '(без наименования)'
-                                }
+                        }
+                    )
+                    each_one_char.update(
+                        {   
+                            'Максимальное разрешение': {
+                                'value': value_char.replace('пикс.', '').split(' ')[0].strip(),
+                                'char_name': 'Максимальное разрешение',
+                                'vid_name': 'Обычный',
+                                'unit_name': '(без наименования)'
                             }
-                        )
-                    except:
-                        pass
+                        }
+                    )
                 except:
-                    try:
-                        each_one_char.update(
-                            
-                            {
-                                'Максимальное разрешение': {
-                                    'value': value_char.strip().split(' ')[0],
-                                    'char_name': 'Максимальное разрешение',
-                                    'vid_name': 'Обычный',
-                                    'unit_name': '(без наименования)'
-                                }
-                            }
-                        )
-                    except:
-                        pass
+                    pass
             elif site == 'https://www.dns-shop.ru/search/?q=' or site == 'https://www.onlinetrade.ru/sitesearch.html?query=':
                 try:
                     each_one_char.update(
                         
                         {
                             'Максимальное разрешение': {
-                                'value': value_char.strip().split(' ')[0],
+                                'value': value_char.replace('пикс.', '').split(' ')[0],
                                 'char_name': 'Максимальное разрешение',
                                 'vid_name': 'Обычный',
                                 'unit_name': '(без наименования)'
@@ -3136,8 +3119,8 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
 
 def main():
-        # search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
-        search_mice(name_xlsx='product_templates_products_mice.xlsx')
+        search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
+        # search_mice(name_xlsx='product_templates_products_mice.xlsx')
         # search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
         # search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
 
