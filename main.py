@@ -2545,9 +2545,9 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
             try:
                 each_one_char.update(
                     {
-                        'Страна-производитель': {
+                        'Страна производства': {
                             'value': value_char.strip(),
-                            'char_name': 'Страна-производитель',
+                            'char_name': 'Страна производства',
                             'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
                         }
@@ -3189,10 +3189,10 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
 
 def main():
-        search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
+        # search_monitors(name_xlsx='product_templates_products_monitors.xlsx')
         # search_mice(name_xlsx='product_templates_products_mice.xlsx')
         # search_ddr(name_xlsx='product_templates_products_ddr.xlsx')
-        # search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
+        search_cartridges(name_xlsx='product_templates_products_cartridges.xlsx')
 
 
 if __name__ == '__main__':
