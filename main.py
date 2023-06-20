@@ -3016,7 +3016,7 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                 driver.get(item_url)
                                 time.sleep(3)
 
-                                # WebDriverWait(driver, 12).until(EC.element_to_be_clickable((By.ID, 'ui-id-2'))).click()
+                                WebDriverWait(driver, 12).until(EC.element_to_be_clickable((By.ID, 'goods_content')))
 
                                 char_item_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -3032,8 +3032,12 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                 except:
                                     print('\t[-] Image not found')
 
-                                char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
+                                try:
                                     char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
+
+                                except Exception as ex:
+                                    print(ex)
+
                                 try:
                                     for char_item in char_item_wrap:
                                         name_char = char_item.find('span').text.strip().replace(':', '')
