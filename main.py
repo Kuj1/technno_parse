@@ -145,7 +145,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Ширина': {
-                            'value': value_char.split('x')[0].strip().value_char.strip().replace('мм', '').strip(),
+                            'value': value_char.split('x')[0].strip().replace('мм', '').strip(),
                             'char_name': 'Ширина',
                             'vid_name': 'Обычный',
                             'unit_name': 'миллиметр'
@@ -155,7 +155,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Высота': {
-                            'value': value_char.split('x')[1].strip().value_char.strip().replace('мм', '').strip(),
+                            'value': value_char.split('x')[1].strip().replace('мм', '').strip(),
                             'char_name': 'Высота',
                             'vid_name': 'Обычный',
                             'unit_name': 'миллиметр'
@@ -176,7 +176,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Ширина': {
-                            'value': value_char.split('х')[0].strip().value_char.strip().replace('мм', '').strip(),
+                            'value': value_char.split('х')[0].strip().replace('мм', '').strip(),
                             'char_name': 'Ширина',
                             'vid_name': 'Обычный',
                             'unit_name': 'миллиметр'
@@ -186,7 +186,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Высота': {
-                            'value': value_char.split('х')[1].strip().value_char.strip().replace('мм', '').strip(),
+                            'value': value_char.split('х')[1].strip().replace('мм', '').strip(),
                             'char_name': 'Высота',
                             'vid_name': 'Обычный',
                             'unit_name': 'миллиметр'
@@ -1004,7 +1004,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Высота': {
-                            'value': value_char.split('x')[1].strip().value_char.strip().replace('мм', '').strip(),
+                            'value': value_char.split('x')[1].strip().replace('мм', '').strip(),
                             'char_name': 'Высота',
                             'vid_name': 'один из',
                             'unit_name': '(без наименования)'
