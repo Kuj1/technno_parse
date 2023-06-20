@@ -172,8 +172,37 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         }
                     }
                 )
-            except:
-                pass
+            except IndexError:
+                each_one_char.update(
+                    {
+                        'Ширина': {
+                            'value': value_char.split('х')[0].strip().value_char.strip().replace('мм', '').strip(),
+                            'char_name': 'Ширина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Высота': {
+                            'value': value_char.split('х')[1].strip().value_char.strip().replace('мм', '').strip(),
+                            'char_name': 'Высота',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Глубина': {
+                            'value': value_char.split('х')[2].replace('мм', '').strip(),
+                            'char_name': 'Глубина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
         elif name_char == 'Вес':
             try:
                 each_one_char.update(
@@ -2432,16 +2461,28 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 pass
         elif name_char == 'Вес':
             try:
-                each_one_char.update(
-                    {
-                        'Вес': {
-                            'value': value_char.strip(),
-                            'char_name': 'Вес',
-                            'vid_name': 'Обычный',
-                            'unit_name': '(без наименования)'
+                if 'кг' in value_char:
+                    each_one_char.update(
+                        {
+                            'Вес': {
+                                'value': float(value_char.replace('кг', '').strip()) * 1000,
+                                'char_name': 'Вес',
+                                'vid_name': 'Обычный',
+                                'unit_name': '(без наименования)'
+                            }
                         }
-                    }
-                )
+                    ) 
+                else:
+                    each_one_char.update(
+                        {
+                            'Вес': {
+                                'value': value_char.replace('г', '').strip(),
+                                'char_name': 'Вес',
+                                'vid_name': 'Обычный',
+                                'unit_name': '(без наименования)'
+                            }
+                        }
+                    )
             except:
                 pass
         elif name_char == 'Ресурс':
@@ -2602,14 +2643,43 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         }
                     }
                 )
-            except:
-                pass
+            except IndexError:
+                each_one_char.update(
+                    {
+                        'Ширина': {
+                            'value': value_char.split('х')[0].strip(),
+                            'char_name': 'Ширина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Высота': {
+                            'value': value_char.split('х')[1].strip(),
+                            'char_name': 'Высота',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
+                each_one_char.update(
+                    {
+                        'Глубина': {
+                            'value': value_char.split('х')[2].replace('мм', '').strip(),
+                            'char_name': 'Глубина',
+                            'vid_name': 'Обычный',
+                            'unit_name': 'миллиметр'
+                        }
+                    }
+                )
         elif name_char == 'Ширина':
             try:
                 each_one_char.update(
                     {
                         'Ширина': {
-                            'value': value_char.strip(),
+                            'value': value_char.strip().replace('мм'),
                             'char_name': 'Ширина',
                             'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
@@ -2623,7 +2693,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Высота': {
-                            'value': value_char.strip(),
+                            'value': value_char.strip().replace('мм'),
                             'char_name': 'Высота',
                             'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
@@ -2637,7 +2707,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                 each_one_char.update(
                     {
                         'Длина': {
-                            'value': value_char.strip(),
+                            'value': value_char.strip().replace('мм'),
                             'char_name': 'Длина',
                             'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
