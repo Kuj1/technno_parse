@@ -2960,13 +2960,7 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                     print('\t[-] Image not found')
 
                                 try:
-
                                     char_item_wrap = char_item_soup.find('div', class_='ProductCharacteristics_wrap__3RjsG').find('div', class_='ProductCharacteristics_masonry__Ut6Zp').find_all('section', class_='CharacteristicsSection_section__ZctKC')
-
-                                except Exception as ex:
-                                    print(ex)   
-
-                                try:
                                     for char_item in char_item_wrap:
                                         char_item_content = char_item.find('div', class_='CharacteristicsSection_content__5BpzM').find_all('div', class_='CharacteristicsItem_item__QnlK2')
                                         for char_content in char_item_content:
@@ -2999,11 +2993,6 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                             WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wrap"]')))
                         except Exception as ex:
                             print('\t[+] No captcha')
-                        
-                        # try:
-                        #     WebDriverWait(driver, 6).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wrap"]')))
-                        # except:
-                        #     continue
 
                         item_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -3029,12 +3018,6 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
                                     result_char_dict.update(img)
                                 except:
                                     print('\t[-] Image not found')
-
-                                # try:
-                                #     char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
-
-                                # except Exception as ex:
-                                #     print(ex)
 
                                 try:
                                     char_item_wrap = char_item_soup.find('div', attrs={'id': 'tabs_description'}).find('ul', class_='featureList').find_all('li', class_='featureList__item')
@@ -3087,11 +3070,6 @@ def grab_data(req, monitors=False, mice=False, ddr=False, cartridges=False):
 
                             try:
                                 char_item_wrapper = char_item_soup.find('div', class_='product-card-description').find('div', class_='product-card-description-specs').find('div', class_='product-characteristics').find('div', class_='product-characteristics-content')
-                            except Exception as ex:
-                                print(ex)
-
-                            try:
-                                # for char_item_group in char_item_wrapper:
                                 char_item = char_item_wrapper.find_all('div', class_='product-characteristics__spec')
                                 for char in char_item:
                                     name_char = char.find('div', class_='product-characteristics__spec-title').text.strip()
