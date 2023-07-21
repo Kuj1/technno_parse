@@ -71,7 +71,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Соотношение сторон': {
                                 'value': value_char.replace('пикс.', '').split(' ')[1].replace('(', '').replace(')', '').strip(),
                                 'char_name': 'Соотношение сторон',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -81,7 +81,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Максимальное разрешение': {
                                 'value': value_char.replace('пикс.', '').split(' ')[0].strip(),
                                 'char_name': 'Максимальное разрешение',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -96,7 +96,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Максимальное разрешение': {
                                 'value': value_char.replace('пикс.', '').split(' ')[0],
                                 'char_name': 'Максимальное разрешение',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -110,7 +110,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Диагональ': {
                             'value': value_char.strip().replace(' ', ''),
                             'char_name': 'Диагональ',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -124,7 +124,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Поддержка HDR': {
                             'value': 'есть',
                             'char_name': 'Поддержка HDR',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -135,7 +135,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Поддержка HDR': {
                             'value': value_char,
                             'char_name': 'Поддержка HDR',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -224,7 +224,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Широкоформатный': {
                             'value': value_char,
                             'char_name': 'Широкоформатный',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -355,7 +355,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Переменная частота обновления': {
                             'value': value_char.strip(),
                             'char_name': 'Переменная частота обновления',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -369,7 +369,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'USB-концентратор': {
                             'value': value_char.split(',')[0].strip(),
                             'char_name': 'USB-концентратор',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -392,7 +392,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Время отклика': {
                             'value': value_char.split(' ')[0].replace('&nbsp;', '').strip(),
                             'char_name': 'Время отклика',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': 'мс'
                         }
                     }
@@ -406,7 +406,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Контрастность': {
                             'value': value_char.strip().replace(' ', ''),
                             'char_name': 'Контрастность',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -420,7 +420,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Динамическая контрастность': {
                             'value': value_char.strip().replace(' ', '').replace('М', '000000').strip(),
                             'char_name': 'Динамическая контрастность',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -449,7 +449,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Поверхность экрана': {
                                 'value': 'матовое',
                                 'char_name': 'Поверхность экрана',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -460,7 +460,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Поверхность экрана': {
                                 'value': value_char.strip(),
                                 'char_name': 'Поверхность экрана',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -474,7 +474,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Подсветка': {
                             'value': value_char.strip(),
                             'char_name': 'Подсветка',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -488,7 +488,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Тип матрицы экрана': {
                             'value': value_char.strip(),
                             'char_name': 'Тип матрицы экрана',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -503,7 +503,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Сенсорный экран': {
                                 'value': 'есть',
                                 'char_name': 'Сенсорный экран',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -514,7 +514,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Сенсорный экран': {
                                 'value': value_char.strip(),
                                 'char_name': 'Сенсорный экран',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -571,7 +571,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Блок питания': {
                             'value': value_char.strip(),
                             'char_name': 'Блок питания',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -586,7 +586,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Поворот на 90 градусов': {
                                 'value': 'есть',
                                 'char_name': 'Поворот на 90 градусов',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'    
                             }
                         }
@@ -597,7 +597,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Поворот на 90 градусов': {
                                 'value': value_char,
                                 'char_name': 'Поворот на 90 градусов',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'    
                             }
                         }
@@ -611,7 +611,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Макс. частота обновления кадров': {
                             'value': value_char.strip(),
                             'char_name': 'Макс. частота обновления кадров',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': 'Гц'
                         }
                     }
@@ -626,7 +626,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Крепление на стену (VESA)': {
                                 'value': value_char.strip(),
                                 'char_name': 'Крепление на стену (VESA)',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -639,7 +639,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Крепление на стену (VESA)': {
                                 'value': f'есть, {value_char.replace("мм", "").replace(" ", "").strip()}',
                                 'char_name': 'Крепление на стену (VESA)',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -653,7 +653,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Регулировка по высоте': {
                             'value': 'есть',
                             'char_name': 'Регулировка по высоте',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -978,7 +978,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Комплектация': {
                             'value': value_char.split(', '),
                             'char_name': 'Комплектация',
-                            'vid_name': 'один из',
+                            'vid_name': 'обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -992,7 +992,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Ширина': {
                             'value': value_char.strip().replace('мм', '').strip(),
                             'char_name': 'Ширина',
-                            'vid_name': 'один из',
+                            'vid_name': 'обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1006,7 +1006,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Высота': {
                             'value': value_char.split('x')[1].strip().replace('мм', '').strip(),
                             'char_name': 'Высота',
-                            'vid_name': 'один из',
+                            'vid_name': 'обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1020,7 +1020,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Глубина': {
                             'value': value_char.strip().replace('мм', '').strip(),
                             'char_name': 'Глубина',
-                            'vid_name': 'один из',
+                            'vid_name': 'обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1034,7 +1034,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Вес': {
                             'value': value_char.strip().replace('кг', '').replace('&nbsp;', '').replace('кг&nbsp;', '').replace('кг ', '').strip(),
                             'char_name': 'Вес',
-                            'vid_name': 'один из',
+                            'vid_name': 'обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1048,7 +1048,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Вес нетто': {
                             'value': value_char.strip().replace('кг', '').replace('&nbsp;', '').replace('кг&nbsp;', '').replace('кг ', '').strip(),
                             'char_name': 'Вес нетто',
-                            'vid_name': 'один из',
+                            'vid_name': 'обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1062,7 +1062,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Комплектация': {
                             'value': value_char.strip(),
                             'char_name': 'Комплектация',
-                            'vid_name': 'один из',
+                            'vid_name': 'обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1076,7 +1076,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Особенности': {
                             'value': value_char.strip(),
                             'char_name': 'Особенности',
-                            'vid_name': 'один из',
+                            'vid_name': 'обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1132,7 +1132,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Дополнительная информация': {
                             'value': value_char.strip(),
                             'char_name': 'Дополнительная информация',
-                            'vid_name': 'один из',
+                            'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1146,7 +1146,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Функциональность': {
                             'value': value_char.strip(),
                             'char_name': 'Функциональность',
-                            'vid_name': 'один из',
+                            'vid_name': 'Обычный',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1189,7 +1189,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Максимальное разрешение': {
                             'value': value_char.strip(),
                             'char_name': 'Максимальное разрешение',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1219,7 +1219,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Материал обоймы': {
                             'value': value_char.strip(),
                             'char_name': 'Материал обоймы',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1233,7 +1233,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                                 'Время работы': {
                                     'value': value_char.strip(),
                                     'char_name': 'Время работы',
-                                    'vid_name': 'Обычный',
+                                    'vid_name': 'один из',
                                     'unit_name': '(без наименования)'
                                 }
                             }
@@ -1287,7 +1287,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Количество программируемых клавиш': {
                             'value': value_char.strip(),
                             'char_name': 'Количество программируемых клавиш',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1301,7 +1301,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Сканер отпечатка пальца': {
                             'value': value_char.strip(),
                             'char_name': 'Сканер отпечатка пальца',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1315,7 +1315,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Система регулировки веса': {
                             'value': value_char.strip(),
                             'char_name': 'Система регулировки веса',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1329,7 +1329,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Бесшумное нажатие клавиш мыши': {
                             'value': value_char.strip(),
                             'char_name': 'Бесшумное нажатие клавиш мыши',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1371,7 +1371,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Цвет': {
                             'value': value_char.strip(),
                             'char_name': 'Цвет',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1385,7 +1385,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Количество клавиш': {
                             'value': value_char.strip(),
                             'char_name': 'Количество клавиш',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1399,7 +1399,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Горизонтальная прокрутка': {
                             'value': value_char.strip(),
                             'char_name': 'Горизонтальная прокрутка',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1413,7 +1413,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Тип беспроводной связи': {
                             'value': value_char.strip(),
                             'char_name': 'Тип беспроводной связи',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1427,7 +1427,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Разрешение оптического сенсора': {
                             'value': value_char.strip(),
                             'char_name': 'Разрешение оптического сенсора',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1441,7 +1441,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Тип': {
                             'value': value_char.strip(),
                             'char_name': 'Тип',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1455,7 +1455,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Источник питания мыши': {
                             'value': value_char.strip(),
                             'char_name': 'Источник питания мыши',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1469,7 +1469,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Дизайн': {
                             'value': value_char.strip(),
                             'char_name': 'Дизайн',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1497,7 +1497,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Радиус действия беспроводной связи': {
                             'value': value_char.strip(),
                             'char_name': 'Радиус действия беспроводной связи',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1511,7 +1511,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Интерфейс подключения': {
                             'value': value_char.strip(),
                             'char_name': 'Интерфейс подключения',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1525,7 +1525,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Сенсорная прокрутка': {
                             'value': value_char.strip(),
                             'char_name': 'Сенсорная прокрутка',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1540,7 +1540,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Беспроводная связь': {
                                 'value': value_char.strip(),
                                 'char_name': 'Беспроводная связь',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1551,7 +1551,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Беспроводная связь': {
                                 'value': 'есть',
                                 'char_name': 'Беспроводная связь',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1565,7 +1565,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Тип подключения': {
                             'value': value_char.strip(),
                             'char_name': 'Тип подключения',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1699,7 +1699,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Принцип работы': {
                                 'value': 'оптическая светодиодная',
                                 'char_name': 'Принцип работы',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1710,7 +1710,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Принцип работы': {
                                 'value': 'оптическая лазерная',
                                 'char_name': 'Принцип работы',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1724,7 +1724,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Частота опроса': {
                             'value': value_char.strip(),
                             'char_name': 'Частота опроса',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1780,7 +1780,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Радиус действия беспроводной связи': {
                             'value': value_char.strip(),
                             'char_name': 'Радиус действия беспроводной связи',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1844,7 +1844,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Количество рангов': {
                                 'value': '1',
                                 'char_name': 'Количество рангов',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1855,7 +1855,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Количество рангов': {
                                 'value': '2',
                                 'char_name': 'Количество рангов',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1866,7 +1866,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Количество рангов': {
                                 'value': '4',
                                 'char_name': 'Количество рангов',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1877,7 +1877,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Количество рангов': {
                                 'value': '8',
                                 'char_name': 'Количество рангов',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1931,7 +1931,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Поддержка XMP': {
                                 'value': 'нет',
                                 'char_name': 'Поддержка XMP',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1945,7 +1945,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Радиатор': {
                             'value': value_char.strip(),
                             'char_name': 'Радиатор',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -1961,7 +1961,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Форм-фактор модуля памяти': {
                                 'value': 'DIMM',
                                 'char_name': 'Форм-фактор модуля памяти',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1972,7 +1972,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Форм-фактор модуля памяти': {
                                 'value': 'LRDIMM',
                                 'char_name': 'Форм-фактор модуля памяти',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1983,7 +1983,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Форм-фактор модуля памяти': {
                                 'value': 'MicroDIMM',
                                 'char_name': 'Форм-фактор модуля памяти',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -1994,7 +1994,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Форм-фактор модуля памяти': {
                                 'value': 'RDIMM',
                                 'char_name': 'Форм-фактор модуля памяти',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -2005,7 +2005,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Форм-фактор модуля памяти': {
                                 'value': 'SODIMM',
                                 'char_name': 'Форм-фактор модуля памяти',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -2016,7 +2016,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Форм-фактор модуля памяти': {
                                 'value': 'FB-DIMM',
                                 'char_name': 'Форм-фактор модуля памяти',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -2030,7 +2030,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Упаковка чипов': {
                             'value': value_char.strip(),
                             'char_name': 'Упаковка чипов',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2058,7 +2058,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Row Precharge Delay (tRP)': {
                             'value': value_char.strip(),
                             'char_name': 'Row Precharge Delay (tRP)',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2073,7 +2073,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Напряжение питания': {
                                 'value': value_char.strip(),
                                 'char_name': 'Напряжение питания',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -2089,7 +2089,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Буферизованная (Registered)': {
                             'value': value_char.strip(),
                             'char_name': 'Буферизованная (Registered)',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2103,7 +2103,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'CAS Latency (CL)': {
                             'value': value_char.strip(),
                             'char_name': 'CAS Latency (CL)',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2117,7 +2117,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Игровая': {
                             'value': value_char.strip(),
                             'char_name': 'Игровая',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2132,7 +2132,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Низкопрофильная (Low Profile)': {
                             'value': 'да',
                             'char_name': 'Низкопрофильная (Low Profile)',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2143,7 +2143,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                             'Низкопрофильная (Low Profile)': {
                                 'value': 'нет',
                                 'char_name': 'Низкопрофильная (Low Profile)',
-                                'vid_name': 'Обычный',
+                                'vid_name': 'один из',
                                 'unit_name': '(без наименования)'
                             }
                         }
@@ -2157,7 +2157,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Пропускная способность': {
                             'value': value_char.strip().replace('Мб/с', 'МБ/с'),
                             'char_name': 'Пропускная способность',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2185,7 +2185,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Activate to Precharge Delay (tRAS': {
                             'value': value_char.strip(),
                             'char_name': 'Activate to Precharge Delay (tRAS',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2199,7 +2199,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Количество модулей в комплекте': {
                             'value': value_char.strip().replace('шт.', '').strip(),
                             'char_name': 'Количество модулей в комплекте',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2241,7 +2241,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Объем одного модуля': {
                             'value': value_char.strip().replace('Гб', 'ГБ'),
                             'char_name': 'Объем одного модуля',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2255,7 +2255,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Тип памяти': {
                             'value': value_char.strip().replace('DIMM', '').strip(),
                             'char_name': 'Тип памяти',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2269,7 +2269,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'RAS to CAS Delay (tRCD)': {
                             'value': value_char.strip(),
                             'char_name': 'RAS to CAS Delay (tRCD)',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2283,7 +2283,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Поддержка ECC': {
                             'value': value_char.strip(),
                             'char_name': 'Поддержка ECC',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2297,7 +2297,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Тактовая частота': {
                             'value': value_char.strip(),
                             'char_name': 'Тактовая частота',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2311,7 +2311,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Низкопрофильная (Low Profile)': {
                             'value': value_char.strip(),
                             'char_name': 'Низкопрофильная (Low Profile)',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2409,7 +2409,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Тип': {
                             'value': value_char.strip(),
                             'char_name': 'Тип',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2452,7 +2452,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Назначение': {
                             'value': value_char.strip(),
                             'char_name': 'Назначение',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2506,7 +2506,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Количество картриджей': {
                             'value': value_char.strip(),
                             'char_name': 'Количество картриджей',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2520,7 +2520,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Количество листов бумаги': {
                             'value': value_char.strip(),
                             'char_name': 'Количество листов бумаги',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2534,7 +2534,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Тип': {
                             'value': value_char.strip(),
                             'char_name': 'Тип',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2562,7 +2562,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Оригинальный': {
                             'value': value_char.strip(),
                             'char_name': 'Оригинальный',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
@@ -2576,7 +2576,7 @@ def get_char(name_char, value_char, site, monitors: bool, mice: bool, ddr=bool, 
                         'Цвет': {
                             'value': value_char.strip(),
                             'char_name': 'Цвет',
-                            'vid_name': 'Обычный',
+                            'vid_name': 'один из',
                             'unit_name': '(без наименования)'
                         }
                     }
